@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ad8276a8-e67b-4c64-b180-5284ff944e61" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.in" beforeDir="false" afterPath="$PROJECT_DIR$/data.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SemanticChecker/Scope/GlobalScope.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SemanticChecker/Scope/GlobalScope.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SemanticChecker/SemanticChecker/SemanticChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SemanticChecker/SemanticChecker/SemanticChecker.java" afterDir="false" />
-    </list>
+    <list default="true" id="ad8276a8-e67b-4c64-b180-5284ff944e61" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -122,7 +116,7 @@
       <workItem from="1586095415735" duration="603000" />
       <workItem from="1586096048920" duration="48087000" />
       <workItem from="1586171931318" duration="289000" />
-      <workItem from="1586172354623" duration="2327000" />
+      <workItem from="1586172354623" duration="2608000" />
     </task>
     <task id="LOCAL-00001" summary="modify">
       <created>1586089960308</created>
@@ -152,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586094871777</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="modify">
+      <created>1586174958787</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1586174958787</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,10 +185,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="172" y="294" width="439" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.864@0.0.1536.864" timestamp="1586154135227" />
-    <state x="372" y="26" key="CommitChangelistDialog2" timestamp="1586174915055">
+    <state x="372" y="26" key="CommitChangelistDialog2" timestamp="1586174950917">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="372" y="26" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1586174915055" />
+    <state x="372" y="26" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1586174950917" />
     <state x="549" y="188" key="FileChooserDialogImpl" timestamp="1585024465406">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -200,22 +201,22 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="548" y="138" key="Github.UntrackedFilesDialog/0.0.1536.864@0.0.1536.864" timestamp="1586172586624" />
-    <state width="1493" height="165" key="GridCell.Tab.0.bottom" timestamp="1586174915101">
+    <state width="1493" height="165" key="GridCell.Tab.0.bottom" timestamp="1586175182061">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="165" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1586174915101" />
-    <state width="1493" height="165" key="GridCell.Tab.0.center" timestamp="1586174915101">
+    <state width="1493" height="165" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1586175182061" />
+    <state width="1493" height="165" key="GridCell.Tab.0.center" timestamp="1586175182060">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="165" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1586174915101" />
-    <state width="1493" height="165" key="GridCell.Tab.0.left" timestamp="1586174915101">
+    <state width="1493" height="165" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1586175182060" />
+    <state width="1493" height="165" key="GridCell.Tab.0.left" timestamp="1586175182060">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="165" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1586174915101" />
-    <state width="1493" height="165" key="GridCell.Tab.0.right" timestamp="1586174915101">
+    <state width="1493" height="165" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1586175182060" />
+    <state width="1493" height="165" key="GridCell.Tab.0.right" timestamp="1586175182060">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="165" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1586174915101" />
+    <state width="1493" height="165" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1586175182060" />
     <state x="147" y="75" key="MergeDialog" timestamp="1586094947079">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -232,10 +233,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="270" y="75" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1586172539405" />
-    <state x="361" y="166" key="Vcs.Push.Dialog.v2" timestamp="1586094878405">
+    <state x="361" y="166" key="Vcs.Push.Dialog.v2" timestamp="1586174976155">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1586094878405" />
+    <state x="361" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1586174976155" />
     <state x="565" y="210" key="chooseDestDirectoryDialog" timestamp="1585303031911">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
