@@ -317,7 +317,7 @@ public class SemanticChecker implements ASTVisitor {
             else errorReminder.error(node.getLoc(), "ltype and rtype not match");
         }
         else if(bi_op == BinaryOperator.ASSIGN){
-            System.out.println(lvalue.getType().typeString() + " " + lvalue.toString());
+            //System.out.println(lvalue.getType().typeString() + " " + lvalue.toString());
             if(!lvalue.getLvalue()) errorReminder.error(node.getLoc(), "left have no lvalue");
             else if(!ltype.toString().equals(rtype.toString())){
                 //System.out.println(ltype.toString() + " " + rtype.toString());
