@@ -479,7 +479,7 @@ public class SemanticChecker implements ASTVisitor {
         node.setScope(scope);
         ExprNode name = node.getName(), member = node.getMember();
         name.accept(this);
-        Type nameType = name.getType(), memberType = member.getType();
+        Type nameType = name.getType();
         if(nameType == null) return;
         if(nameType instanceof ClassSymbol){
             ClassSymbol tmp_nameType = (ClassSymbol)nameType;

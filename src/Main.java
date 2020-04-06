@@ -13,8 +13,8 @@ import utility.*;
 public class Main {
     public static void main(String[] args)throws IOException{
         errorReminder errorReminder = new errorReminder();
-        InputStream in = System.in;
-//        InputStream in = new FileInputStream("data.in");
+//        InputStream in = System.in;
+        InputStream in = new FileInputStream("data.in");
         CharStream charStream = CharStreams.fromStream(in);
 
 

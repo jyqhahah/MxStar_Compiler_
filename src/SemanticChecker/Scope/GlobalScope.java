@@ -150,7 +150,8 @@ public class GlobalScope extends BaseScope {
     @Override
     public VarSymbol ArrayResolver(IndexExprNode array, errorReminder errorReminder) {
         String Identifier = array.getIdentifier();
-        if(typeList.containsKey(Identifier)){
+        //System.out.println(Identifier);
+        if(varList.containsKey(Identifier)){
             VarSymbol var = varList.get(Identifier);
             Type type = var.getType();
             if(type instanceof ArrayType){
