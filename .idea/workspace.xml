@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ad8276a8-e67b-4c64-b180-5284ff944e61" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.bash" beforeDir="false" afterPath="$PROJECT_DIR$/build.bash" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data.in" beforeDir="false" afterPath="$PROJECT_DIR$/data.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/semantic.bash" beforeDir="false" afterPath="$PROJECT_DIR$/semantic.bash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/SemanticChecker/SemanticChecker/SemanticChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/SemanticChecker/SemanticChecker/SemanticChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SemanticChecker/SemanticChecker/SemanticChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SemanticChecker/SemanticChecker/SemanticChecker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +122,7 @@
       <workItem from="1586095415735" duration="603000" />
       <workItem from="1586096048920" duration="48087000" />
       <workItem from="1586171931318" duration="289000" />
-      <workItem from="1586172354623" duration="13408000" />
+      <workItem from="1586172354623" duration="15306000" />
     </task>
     <task id="LOCAL-00001" summary="modify">
       <created>1586089960308</created>
@@ -172,7 +173,21 @@
       <option name="project" value="LOCAL" />
       <updated>1586184088455</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="modify">
+      <created>1586186778226</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1586186778227</updated>
+    </task>
+    <task id="LOCAL-00009" summary="modify">
+      <created>1586186965177</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1586186965177</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,10 +219,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="172" y="294" width="439" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.864@0.0.1536.864" timestamp="1586154135227" />
-    <state x="372" y="26" key="CommitChangelistDialog2" timestamp="1586186786651">
+    <state x="372" y="26" key="CommitChangelistDialog2" timestamp="1586186964117">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="372" y="26" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1586186786651" />
+    <state x="372" y="26" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1586186964117" />
     <state x="549" y="188" key="FileChooserDialogImpl" timestamp="1585024465406">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -220,22 +235,22 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="548" y="138" key="Github.UntrackedFilesDialog/0.0.1536.864@0.0.1536.864" timestamp="1586172586624" />
-    <state width="1493" height="165" key="GridCell.Tab.0.bottom" timestamp="1586185078181">
+    <state width="729" height="165" key="GridCell.Tab.0.bottom" timestamp="1586188678234">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="165" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1586185078181" />
-    <state width="1493" height="165" key="GridCell.Tab.0.center" timestamp="1586185078181">
+    <state width="729" height="165" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1586188678234" />
+    <state width="729" height="165" key="GridCell.Tab.0.center" timestamp="1586188678234">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="165" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1586185078181" />
-    <state width="1493" height="165" key="GridCell.Tab.0.left" timestamp="1586185078181">
+    <state width="729" height="165" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1586188678234" />
+    <state width="729" height="165" key="GridCell.Tab.0.left" timestamp="1586188678233">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="165" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1586185078181" />
-    <state width="1493" height="165" key="GridCell.Tab.0.right" timestamp="1586185078181">
+    <state width="729" height="165" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1586188678233" />
+    <state width="729" height="165" key="GridCell.Tab.0.right" timestamp="1586188678234">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="165" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1586185078181" />
+    <state width="729" height="165" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1586188678234" />
     <state width="1493" height="193" key="GridCell.Tab.1.bottom" timestamp="1586182692808">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -268,10 +283,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="270" y="75" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1586172539405" />
-    <state x="361" y="166" key="Vcs.Push.Dialog.v2" timestamp="1586186805520">
+    <state x="361" y="166" key="Vcs.Push.Dialog.v2" timestamp="1586186974083">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1586186805520" />
+    <state x="361" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1586186974083" />
     <state x="565" y="210" key="chooseDestDirectoryDialog" timestamp="1585303031911">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -306,7 +321,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/SemanticChecker/SemanticChecker/SemanticChecker.java</url>
-          <line>338</line>
+          <line>341</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

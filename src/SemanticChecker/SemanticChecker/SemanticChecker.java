@@ -271,12 +271,15 @@ public class SemanticChecker implements ASTVisitor {
         lvalue.accept(this);rvalue.accept(this);
         //System.out.println("exit");
         BinaryOperator bi_op = node.getOp();
+        //System.out.println(rvalue.toString());
         Type ltype = lvalue.getType(), rtype = rvalue.getType();
         //System.out.println("get");
         //lvalue.accept(this);rvalue.accept(this);
         node.setLvalue(false);
         //System.out.println("binary" + ltype.toString());
+        //System.out.println(rtype == null);
         if(ltype == null || rtype == null) return;
+        //System.out.println(1);
         if(bi_op == BinaryOperator.ADD){
             if(ltype instanceof IntType && rtype instanceof IntType) node.setType(new IntType());
             else if(ltype instanceof StringType && rtype instanceof StringType) node.setType(stringType);
@@ -314,10 +317,10 @@ public class SemanticChecker implements ASTVisitor {
             else errorReminder.error(node.getLoc(), "ltype and rtype not match");
         }
         else if(bi_op == BinaryOperator.ASSIGN){
-            //System.out.println("11111");
+            System.out.println(lvalue.getType().typeString() + " " + lvalue.toString());
             if(!lvalue.getLvalue()) errorReminder.error(node.getLoc(), "left have no lvalue");
             else if(!ltype.toString().equals(rtype.toString())){
-                //System.out.println(ltype.toString() + " " + rtype.toString());//咋运行哇
+                //System.out.println(ltype.toString() + " " + rtype.toString());
                 if(!(rtype instanceof NullType && ltype instanceof ClassSymbol))
                     errorReminder.error(rvalue.getLoc(), "ltype and rtype not match");
             }
@@ -376,6 +379,7 @@ public class SemanticChecker implements ASTVisitor {
 
     @Override
     public void visit(CreatorExprNode node) {
+        //System.out.println(1);
         node.setScope(scope);
         ArrayList<ExprNode> exprList = node.getExpr();
         for(var expr : exprList){
@@ -394,6 +398,7 @@ public class SemanticChecker implements ASTVisitor {
                     case("void"):errorReminder.error(node.getTypeNode().getLoc(), "new expr's type is void");
                     case("int"):errorReminder.error(node.getTypeNode().getLoc(), "new expr's type is int");
                 }
+                node.setType(type);
             }
             else{
                 if(node.getTypeNode().typeName().equals("void"))
@@ -415,6 +420,7 @@ public class SemanticChecker implements ASTVisitor {
 
     @Override
     public void visit(IdExprNode node) {
+        //System.out.println(node.getIdentifier());
         node.setScope(scope);
         VarSymbol varSymbol = scope.VarResolver(node, errorReminder);
         node.setSymbol(varSymbol);
@@ -514,6 +520,7 @@ public class SemanticChecker implements ASTVisitor {
 
     @Override
     public void visit(MethodExprNode node) {
+        //System.out.println(node.getIdentifier());
         node.setScope(scope);
         ArrayList<ExprNode> exprList = node.getParaList();
         for(var expr : exprList) expr.accept(this);
@@ -535,7 +542,8 @@ public class SemanticChecker implements ASTVisitor {
             node.setLvalue(false);
         }
         else
-            errorReminder.error(node.getLoc(), "visit methodExprNode");
+            {System.out.println(1);
+                errorReminder.error(node.getLoc(), "visit methodExprNode");}
     }
 
     @Override
