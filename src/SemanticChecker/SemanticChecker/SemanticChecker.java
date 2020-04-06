@@ -334,13 +334,13 @@ public class SemanticChecker implements ASTVisitor {
         else{
             index.accept(this);
             Type indexType = index.getType();
-            if(!(indexType instanceof IntType)) errorReminder.error(index.getLoc(),"invalid type of index"+index.toString()+"\'");
+            if(!(indexType instanceof IntType)) {errorReminder.error(index.getLoc(),"invalid type of index"+index.toString()+"\'");}
         }
         if(name instanceof IdExprNode){
-            IdExprNode tmp_name = (IdExprNode)name;
-            node.setIdentifier(tmp_name.getIdentifier());
+            name.setScope(scope);
+            node.setIdentifier(((IdExprNode)name).getIdentifier());
             VarSymbol varSymbol = scope.ArrayResolver(node, errorReminder);
-            ((IdExprNode)name).setSymbol(scope.VarResolver(tmp_name, errorReminder));
+            ((IdExprNode)name).setSymbol(scope.VarResolver((IdExprNode)name, errorReminder));
             if(varSymbol != null){
                 node.setType(varSymbol.getType());
                 node.setLvalue(true);
@@ -624,12 +624,13 @@ public class SemanticChecker implements ASTVisitor {
             expr.accept(this);
             Type exprType = expr.getType(), returnType = functSymbol.getType();
             if(exprType != null && returnType != null){
+                //System.out.println(exprType instanceof NullType && !(returnType instanceof ClassSymbol));
                 if(functSymbol.isConstructor()) errorReminder.error(node.getLoc(), "constructor return a value");
-                else if(exprType instanceof NullType && !(returnType instanceof ClassSymbol))
-                    errorReminder.error(node.getLoc(), "returnValueType is not null, returnStat is null");
+                else if(exprType instanceof NullType){if(!(returnType instanceof ClassSymbol))
+                    errorReminder.error(node.getLoc(), "returnValueType is not null, returnStat is null");}
                 else if(returnType instanceof  VoidType)
                     errorReminder.error(node.getLoc(), "returnValue Type is void, but returnStat is not null");
-                else if(!returnType.typeString().equals(exprType.typeString()))
+                else if(!returnType.toString().equals(exprType.toString()))
                     errorReminder.error(node.getLoc(), "mismatch between returnValueType and returnStat");
             }
         }

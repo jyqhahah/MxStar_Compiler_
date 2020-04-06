@@ -45,6 +45,7 @@ public class GlobalScope extends BaseScope {
         if(typeNode instanceof ArrayTypeNode){
             ArrayTypeNode tmp_node = (ArrayTypeNode)typeNode;
             int dims = tmp_node.getDims();
+            type = new ArrayType(getGlobalScope(), id, dims);
         }
         FunctSymbol functSymbol = new FunctSymbol(this, Identifier, type, new LinkedHashMap<>());
         FunctList.put(Identifier, functSymbol);
@@ -92,6 +93,9 @@ public class GlobalScope extends BaseScope {
     @Override
     public Type TypeResolver(String Indentifier) {
         //System.out.println(typeList.keySet());
+        /*var ret = typeList.getOrDefault(Indentifier, null);
+        if (ret == null) return varList.getOrDefault(Indentifier, null).getType();
+        else return ret;*/
         return typeList.getOrDefault(Indentifier, null);
     }
 
@@ -125,8 +129,8 @@ public class GlobalScope extends BaseScope {
                 Type tmp_para = entry.getValue().getType();
                 Type para = paraList.get(cnt).getType();
                 if(para != null){
-                    if(para instanceof NullType && !(tmp_para instanceof ClassSymbol))
-                        errorReminder.error(paraList.get(cnt).getLoc(),"null expression apply to invalid type"+tmp_para.toString());
+                    if(para instanceof NullType){ if(!(tmp_para instanceof ClassSymbol))
+                        errorReminder.error(paraList.get(cnt).getLoc(),"null expression apply to invalid type"+tmp_para.toString());}
                     else if(!tmp_para.toString().equals(para.toString()))
                         errorReminder.error(paraList.get(cnt).getLoc(), "paraType not match between" + tmp_para.typeString() + " and "+ para.typeString());
                 }
@@ -159,7 +163,7 @@ public class GlobalScope extends BaseScope {
                 int dims = tmp_node.getDims();
                 String id = type.typeString();
                 if(dims == 1)
-                    return new VarSymbol(Identifier, null, TypeResolver(Identifier));
+                    return new VarSymbol(Identifier, null, TypeResolver(id));
                 else {
                     ArrayType arrayType = new ArrayType(getGlobalScope(), id, dims - 1);
                     return new VarSymbol(Identifier, null, arrayType);
