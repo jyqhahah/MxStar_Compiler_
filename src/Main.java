@@ -3,7 +3,13 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import AST.*;
+import SemanticChecker.Scope.GlobalScope;
+import SemanticChecker.Scope.Type.StringType;
 import SemanticChecker.SemanticChecker.SemanticChecker;
+import llvm_IR.IRBBlock;
+import llvm_IR.IRBuilder;
+import llvm_IR.IRModule;
+import llvm_IR.IRPrinter;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -13,8 +19,8 @@ import utility.*;
 public class Main {
     public static void main(String[] args)throws IOException{
         errorReminder errorReminder = new errorReminder();
-        InputStream in = System.in;
-//        InputStream in = new FileInputStream("data.in");
+//        InputStream in = System.in;
+        InputStream in = new FileInputStream("data.in");
         CharStream charStream = CharStreams.fromStream(in);
 
 
@@ -31,9 +37,19 @@ public class Main {
         ProgramNode root = (ProgramNode)ast.visit(parser.program());
 
         SemanticChecker checker  = new SemanticChecker(errorReminder);
+        //GlobalScope test = checker.getGlobalScope();
+        //System.out.println(test.getFunctList().size());
         checker.visit(root);
 
         if(errorReminder.count() > 0)
             System.exit(errorReminder.count());
+        //System.out.println("ir start");
+        GlobalScope scope = checker.getGlobalScope();
+        StringType stringType = checker.getStringType();
+        IRBuilder irBuilder = new IRBuilder(scope, stringType);
+        irBuilder.visit(root);
+        IRModule irModule = irBuilder.getModule();
+        IRPrinter irPrinter = new IRPrinter();
+        irPrinter.visit(irModule);
     }
 }

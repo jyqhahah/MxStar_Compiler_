@@ -5,11 +5,15 @@ import SemanticChecker.Scope.Scope;
 import SemanticChecker.Scope.Type.NullType;
 import SemanticChecker.Scope.Type.StringType;
 import SemanticChecker.Scope.Type.Type;
+import llvm_IR.operand.register;
+import llvm_IR.type.IRType;
 import utility.errorReminder;
 
 public class VarSymbol extends Symbol {
     private Scope scope;
     private Type type;
+    private register address;
+    private IRType irType;
 
     public VarSymbol(String Identifier, Scope scope, Type type){
         super(Identifier);
@@ -31,6 +35,22 @@ public class VarSymbol extends Symbol {
 
     public void setType(Type type){
         this.type = type;
+    }
+
+    public void setAddress(register address) {
+        this.address = address;
+    }
+
+    public register getAddress() {
+        return address;
+    }
+
+    public void setIrType(IRType irType) {
+        this.irType = irType;
+    }
+
+    public IRType getIrType() {
+        return irType;
     }
 
     @Override

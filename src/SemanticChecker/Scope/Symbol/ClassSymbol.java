@@ -5,6 +5,7 @@ import SemanticChecker.Scope.Scope;
 import SemanticChecker.Scope.Type.ArrayType;
 import SemanticChecker.Scope.Type.IntType;
 import SemanticChecker.Scope.Type.Type;
+import llvm_IR.type.IRClassType;
 import utility.errorReminder;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.Map;
 public class ClassSymbol extends SymbolTable implements Type {
     protected LinkedHashMap<String, FunctSymbol> FunctList;
     private FunctSymbol constructor;
+    private IRClassType classType;
 
     public ClassSymbol(Scope scope, String Identifier){
         super(scope, Identifier);
@@ -185,5 +187,21 @@ public class ClassSymbol extends SymbolTable implements Type {
         }
     }
 
+    public int getOrder(String Identifier){
+        int cnt = 0;
+        for(var entry : varList.entrySet()){
+            if(entry.getKey().equals(Identifier)) return cnt;
+            cnt++;
+        }
+        return 0;
+    }
+
+    public void setClassType(IRClassType classType) {
+        this.classType = classType;
+    }
+
+    public IRClassType getClassType() {
+        return classType;
+    }
 
 }

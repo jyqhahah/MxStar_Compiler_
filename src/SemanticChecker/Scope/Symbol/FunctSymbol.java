@@ -4,6 +4,7 @@ import AST.*;
 import SemanticChecker.Scope.Scope;
 import SemanticChecker.Scope.Type.ArrayType;
 import SemanticChecker.Scope.Type.Type;
+import llvm_IR.IRFunction;
 import utility.errorReminder;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class FunctSymbol extends SymbolTable{
     private Type type;
     private LinkedHashMap<String, VarSymbol> paraList;
     private boolean isConstructor;
+    private IRFunction function;
 
     public FunctSymbol(Scope scope, String Identifier, Type type, LinkedHashMap<String, VarSymbol> paraList){
         super(scope, Identifier);
@@ -84,6 +86,14 @@ public class FunctSymbol extends SymbolTable{
                 this.paraList.put(Identifier, varSymbol);
             }
         }
+    }
+
+    public void setFunction(IRFunction function) {
+        this.function = function;
+    }
+
+    public IRFunction getFunction() {
+        return function;
     }
 
     @Override

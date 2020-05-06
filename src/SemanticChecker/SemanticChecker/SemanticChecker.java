@@ -21,12 +21,12 @@ public class SemanticChecker implements ASTVisitor {
     private String[] KeyWord = {"int", "bool", "string", "null", "void", "true", "false", "if", "else", "for", "while", "break", "continue", "return", "new", "class", "this"};
 
     public SemanticChecker(errorReminder errorReminder){
-        scope = new GlobalScope(null);
-        globalScope = new GlobalScope(null);
+        scope = globalScope = new GlobalScope(null);
         this.errorReminder = errorReminder;
         stringType = new StringType(scope);
         ClassSet = new HashSet<>();
         ((GlobalScope)scope).initGlobalScope(scope, stringType);
+        //System.out.println(((GlobalScope)scope).getFunctList().size());
     }
 
     public GlobalScope getGlobalScope() {
@@ -55,8 +55,10 @@ public class SemanticChecker implements ASTVisitor {
                 String Identifier = tmp.getIdentifier();
                 if(isKeyWord(Identifier))
                     errorReminder.error(Class.getLoc(),"Class name is a keyword\'"+Identifier+"\'");
-                else
-                    scope.ClassDeclare(tmp, errorReminder);
+                else{
+                    ClassSymbol classSymbol = scope.ClassDeclare(tmp, errorReminder);
+                    ((ClassdefNode)Class).setClassSymbol(classSymbol);
+                }
             }
         }
         for(var Class : defList){

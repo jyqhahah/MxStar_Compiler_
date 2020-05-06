@@ -1,5 +1,6 @@
 package AST;
 
+import SemanticChecker.Scope.Symbol.ClassSymbol;
 import utility.Location;
 import java.util.ArrayList;
 
@@ -8,6 +9,7 @@ public class ClassdefNode extends DefNode{
     private FuncdefNode consDef;
     private ArrayList<VardefListNode> vardefList;
     private ArrayList<FuncdefNode> funcList;
+    private ClassSymbol classSymbol;
 
     public ClassdefNode(Location loc, String Identifier, FuncdefNode consDef, ArrayList<VardefListNode> vardefList, ArrayList<FuncdefNode> funcList){
         super(loc);
@@ -31,6 +33,14 @@ public class ClassdefNode extends DefNode{
 
     public ArrayList<FuncdefNode> getFuncList() {
         return funcList;
+    }
+
+    public ClassSymbol getClassSymbol() {
+        return classSymbol;
+    }
+
+    public void setClassSymbol(ClassSymbol classSymbol) {
+        this.classSymbol = classSymbol;
     }
 
     @Override

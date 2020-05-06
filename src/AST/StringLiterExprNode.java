@@ -11,7 +11,7 @@ public class StringLiterExprNode extends LiterExprNode {
     }
 
     public String getStringLiter(){
-        return getStringLiter();
+        return stringLiter;
     }
 
     @Override

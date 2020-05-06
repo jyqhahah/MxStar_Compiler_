@@ -382,7 +382,8 @@ public class ASTBuilder extends MxStarBaseVisitor<ASTNode> {
         ArrayList<ExprNode> exprNodes = new ArrayList<>();
         if(ctx.exprList() != null){
             for(var para : ctx.exprList().expr()){
-                exprNodes.add((ExprNode)visit(para));
+                ExprNode tmp = (ExprNode)visit(para);
+                exprNodes.add(tmp);
             }
         }
         return new MethodExprNode(loc, null, exprNodes, (ExprNode)visit(ctx.expr()));
@@ -401,7 +402,8 @@ public class ASTBuilder extends MxStarBaseVisitor<ASTNode> {
         if(ctx.literal().StringLiteral() != null)
             {
                 //System.out.println(333);
-                return new StringLiterExprNode(loc, ctx.literal().StringLiteral().getText());
+                String tmp = ctx.literal().StringLiteral().getText();
+                return new StringLiterExprNode(loc, tmp.substring(1, tmp.length()-1));
             }
         else if(ctx.literal().BoolLiteral() != null)
             {

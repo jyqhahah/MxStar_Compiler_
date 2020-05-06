@@ -71,8 +71,17 @@ public class GlobalScope extends BaseScope {
 
     @Override
     public ClassSymbol getClassScope(String Identifier) {
-        ClassSymbol tmp = (ClassSymbol)typeList.get(Identifier);
-        return tmp;
+        //System.out.println(typeList.size() == 0);
+        return (ClassSymbol)typeList.get(Identifier);
+    }
+
+    public ClassSymbol getResolveScope(String Identifier){
+        return (ClassSymbol)TypeResolver(Identifier);
+    }
+
+    public LinkedHashMap<String, FunctSymbol> getFunctList(){
+        //System.out.println(FunctList.size());
+        return FunctList;
     }
 
     @Override
@@ -191,6 +200,7 @@ public class GlobalScope extends BaseScope {
     }
 
     public void initGlobalScope(Scope globalScope, StringType stringType){
+        //System.out.println("in initScope");
         typeList.put("int", new IntType());typeList.put("bool", new BoolType());
         typeList.put("void", new VoidType());typeList.put("string", stringType);
 
@@ -217,5 +227,6 @@ public class GlobalScope extends BaseScope {
         FunctList.put("getString", new FunctSymbol(globalScope, "getString", stringType,  new LinkedHashMap<>()));
 
         FunctList.put("getInt", new FunctSymbol(globalScope, "getInt", new IntType(),  new LinkedHashMap<>()));
+        //System.out.println(FunctList.size());
     }
 }
