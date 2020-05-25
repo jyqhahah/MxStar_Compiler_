@@ -14,7 +14,8 @@ public class RvPrinter implements RvVisitor {
 
     public RvPrinter() throws FileNotFoundException {
         //printWriter = new PrintWriter(new FileOutputStream("test/test.s"));
-        printWriter = new PrintWriter(System.out);
+        //printWriter = new PrintWriter(System.out);
+        printWriter = new PrintWriter(new FileOutputStream("output.s"));
     }
 
     @Override
