@@ -2,6 +2,7 @@ package llvm_IR.instruction;
 
 import llvm_IR.IRVisitor;
 import llvm_IR.operand.IROperand;
+import llvm_IR.operand.register;
 
 public class RetInst extends IRInstruction {
     private IROperand value;
@@ -9,7 +10,6 @@ public class RetInst extends IRInstruction {
     public RetInst(IROperand value){
         super();
         this.value = value;
-        if(value != null) value.addUsedInst(this);
     }
 
     public IROperand getValue() {
@@ -17,7 +17,7 @@ public class RetInst extends IRInstruction {
     }
 
     @Override
-    public IROperand getRes(){
+    public register getRes(){
         return null;
     }
 
@@ -37,6 +37,12 @@ public class RetInst extends IRInstruction {
     @Override
     public void removeAllDef() {
 
+    }
+
+    @Override
+    public void initDefAndUsed() {
+        if(value != null)
+            value.addUsedInst(this);
     }
 
     @Override

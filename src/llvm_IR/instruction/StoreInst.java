@@ -2,6 +2,7 @@ package llvm_IR.instruction;
 
 import llvm_IR.IRVisitor;
 import llvm_IR.operand.IROperand;
+import llvm_IR.operand.register;
 import llvm_IR.type.IRPointerType;
 
 public class StoreInst extends IRInstruction {
@@ -11,21 +12,36 @@ public class StoreInst extends IRInstruction {
         super();
         this.ptr = ptr;
         this.res = res;
-        ptr.addUsedInst(this);
-        res.addUsedInst(this);
     }
 
-    @Override
-    public IROperand getRes() {
+    public IROperand getValue(){
         return res;
     }
 
     @Override
+    public register getRes() {
+        return null;
+    }
+
+    @Override
     public void replaceUsedInst(IROperand oldOp, IROperand newOp) {
+        boolean flag = false;
         if(res == oldOp){
             res = newOp;
-            newOp.addUsedInst(this);
+            flag = true;
         }
+        if(ptr == oldOp){
+            ptr = newOp;
+            flag = true;
+        }
+        if(flag) newOp.addUsedInst(this);
+    }
+
+    @Override
+    public void initDefAndUsed() {
+        ptr.addUsedInst(this);
+        ptr.addDefInst(this);
+        res.addUsedInst(this);
     }
 
     @Override

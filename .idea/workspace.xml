@@ -2,106 +2,375 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad8276a8-e67b-4c64-b180-5284ff944e61" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/IRBBlock.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/IRBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/IRFunction.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/IRModule.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/IRPrinter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/IRSymbol.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/IRVisitor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/AllocaInst.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/BinOpInst.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/BitCastInst.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/BranchInst.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/CallInst.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/GetElemPtrInst.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/IRInstruction.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/IcmpInst.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/LoadInst.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/PhiInst.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/RetInst.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/StoreInst.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/operand/IROperand.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/operand/constBool.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/operand/constInt.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/operand/constNull.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/operand/constString.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/operand/register.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/operand/string.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/operand/variable.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/BinOpType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRArrayType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRClassType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRIntType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRPointerType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRVoidType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IcmpType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/IRBBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/IRBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/IRFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/IRModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/IRPrinter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/IRSymbol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/IRVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/AllocaInst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/BinOpInst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/BitCastInst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/BranchInst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/CallInst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/GetElemPtrInst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/IRInstruction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/IcmpInst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/LoadInst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/PhiInst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/RetInst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/StoreInst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/operand/IROperand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/operand/constBool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/operand/constInt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/operand/constNull.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/operand/constString.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/operand/register.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/operand/string.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/operand/variable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/type/BinOpType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/type/IRArrayType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/type/IRClassType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/type/IRIntType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/type/IRPointerType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/type/IRType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/type/IRVoidType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/llvm_IR/type/IcmpType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/builtin.ll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/out.ll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/batch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/ASTBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/ASTNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/ASTVisitor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/ArrayTypeNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/BinaryExprNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/BlankStatNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/BlockStatNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/BoolLiterExprNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/BreakStatNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/ClassdefNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/ContinueStatNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/CreatorExprNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/DefNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/ExprNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/ExprStatNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/ForStatNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/FuncdefNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/IdExprNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/IfStatNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/IndexExprNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/IntLiterExprNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/LiterExprNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/MemberExprNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/MethodExprNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/NullLiterExprNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/PostfixExprNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/PrefixExprNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/PrimTypeNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/ProgramNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/ReturnStatNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/StatmentNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/StringLiterExprNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/SubExprNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/ThisExprNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/TypeNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/VarTypeNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/VardefListNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/VardefListStatNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/VardefNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/AST/WhileStatNode.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/Scope/BaseScope.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/Scope/GlobalScope.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/Scope/LocalScope.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/Scope/Scope.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/Scope/Symbol/ClassSymbol.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/Scope/Symbol/FunctSymbol.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/Scope/Symbol/Symbol.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/Scope/Symbol/SymbolTable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/Scope/Symbol/VarSymbol.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/Scope/Type/ArrayType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/Scope/Type/BoolType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/Scope/Type/IntType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/Scope/Type/NullType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/Scope/Type/ScopeType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/Scope/Type/StringType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/Scope/Type/Type.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/Scope/Type/VoidType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/SemanticChecker/SemanticChecker/SemanticChecker.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/IRBBlock.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/IRBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/IRFunction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/IRModule.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/IRPrinter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/IRSymbol.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/IRVisitor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/instruction/AllocaInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/instruction/BinOpInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/instruction/BitCastInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/instruction/BranchInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/instruction/CallInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/instruction/GetElemPtrInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/instruction/IRInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/instruction/IcmpInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/instruction/LoadInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/instruction/MoveInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/instruction/PhiInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/instruction/RetInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/instruction/StoreInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/operand/IROperand.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/operand/constBool.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/operand/constInt.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/operand/constNull.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/operand/constString.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/operand/register.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/operand/string.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/operand/variable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/type/BinOpType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/type/IRArrayType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/type/IRClassType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/type/IRIntType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/type/IRPointerType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/type/IRType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/type/IRVoidType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/llvm_IR/type/IcmpType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/optimize/CFGSimplifier.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/optimize/Dominator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/optimize/PASS.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/optimize/SSAConstructor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/optimize/SSADestructor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarBaseListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarBaseVisitor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarErrorListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarLexer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$ArrayTypeContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$Array_creatorContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$Binary_exprContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$BlankStatContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$BlockContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$BlockStatContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$BreakStatContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$Class_creatorContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$ClassdefContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$ConsdefContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$ContinueStatContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$Creator_exprContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$DefContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$ExprContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$ExprListContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$ExprStatContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$ForStatContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$FuncdefContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$Id_exprContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$IfStatContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$Index_exprContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$Liter_exprContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$LiteralContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$Member_exprContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$Method_exprContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$New_creatorContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$ParaContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$ParaListContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$Postfix_exprContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$Prefix_exprContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$PrimTypeContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$ProgramContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$ReturnStatContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$StatContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$Sub_exprContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$This_exprContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$TypeContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$VarTypeContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$VarType_creatorContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$VardefContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$VardefListContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$VardefListStatContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$WhileStatContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser$Wrong_creatorContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarParser.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/parser/MxStarVisitor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/RegAlloca$edge.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/RegAlloca.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/RvBBlock.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/RvBuilder$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/RvBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/RvFunction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/RvModule.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/RvPrinter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/RvVisitor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/instruction/RvBInst$b_op.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/instruction/RvBInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/instruction/RvCallInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/instruction/RvCmpzInst$cmp_op.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/instruction/RvCmpzInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/instruction/RvIInst$i_op.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/instruction/RvIInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/instruction/RvInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/instruction/RvJInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/instruction/RvJrInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/instruction/RvLiInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/instruction/RvLoadInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/instruction/RvLuiInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/instruction/RvMoveInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/instruction/RvRInst$r_op.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/instruction/RvRInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/instruction/RvStoreInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/operand/RegisterList.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/operand/RvOperand.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/operand/RvPhyReg.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/operand/RvRegister.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/operand/RvString.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/operand/RvVariable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/operand/RvVirReg.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/operand/address.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/operand/imm.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/riscv/operand/spSlot.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/utility/BinaryOperator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/utility/Location.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/utility/Pair.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/utility/UnaryOperator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/utility/errorReminder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/builtin.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/codegen.bash" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diff.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/MoveInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/optimize/CFGSimplifier.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/optimize/Dominator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/optimize/PASS.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/optimize/SSAConstructor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/optimize/SSADestructor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/RegAlloca$edge.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/RegAlloca.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/RvBBlock.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/RvBuilder$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/RvBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/RvFunction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/RvModule.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/RvPrinter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/RvVisitor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/instruction/RvBInst$b_op.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/instruction/RvBInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/instruction/RvCallInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/instruction/RvCmpzInst$cmp_op.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/instruction/RvCmpzInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/instruction/RvIInst$i_op.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/instruction/RvIInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/instruction/RvInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/instruction/RvJInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/instruction/RvJrInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/instruction/RvLiInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/instruction/RvLoadInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/instruction/RvLuiInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/instruction/RvMoveInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/instruction/RvRInst$r_op.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/instruction/RvRInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/instruction/RvStoreInst.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/operand/RegisterList.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/operand/RvOperand.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/operand/RvPhyReg.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/operand/RvRegister.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/operand/RvString.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/operand/RvVariable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/operand/RvVirReg.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/operand/address.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/operand/imm.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/riscv/operand/spSlot.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/utility/Pair.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ravel.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/MoveInst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/optimize/CFGSimplifier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/optimize/Dominator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/optimize/PASS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/optimize/SSAConstructor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/optimize/SSADestructor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/RegAlloca.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/RvBBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/RvBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/RvFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/RvModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/RvPrinter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/RvVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/instruction/RvBInst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/instruction/RvCallInst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/instruction/RvCmpzInst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/instruction/RvIInst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/instruction/RvInstruction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/instruction/RvJInst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/instruction/RvJrInst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/instruction/RvLiInst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/instruction/RvLoadInst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/instruction/RvLuiInst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/instruction/RvMoveInst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/instruction/RvRInst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/instruction/RvStoreInst.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/operand/RegisterList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/operand/RvOperand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/operand/RvPhyReg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/operand/RvRegister.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/operand/RvString.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/operand/RvVariable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/operand/RvVirReg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/operand/address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/operand/imm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/riscv/operand/spSlot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utility/Pair.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.ans" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.mx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/a.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/builtin.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/test.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/test.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/test.s" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Compiler-2020-local-judge" beforeDir="false" afterPath="$PROJECT_DIR$/Compiler-2020-local-judge" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.bash" beforeDir="false" afterPath="$PROJECT_DIR$/build.bash" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data.in" beforeDir="false" afterPath="$PROJECT_DIR$/data.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/AST/ASTBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/AST/ASTBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/AST/ClassdefNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/AST/ClassdefNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/AST/ExprNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/AST/ExprNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/AST/StringLiterExprNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/AST/StringLiterExprNode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/SemanticChecker/Scope/GlobalScope.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/SemanticChecker/Scope/GlobalScope.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/SemanticChecker/Scope/Symbol/ClassSymbol.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/SemanticChecker/Scope/Symbol/ClassSymbol.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/SemanticChecker/Scope/Symbol/FunctSymbol.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/SemanticChecker/Scope/Symbol/FunctSymbol.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/SemanticChecker/Scope/Symbol/VarSymbol.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/SemanticChecker/Scope/Symbol/VarSymbol.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/SemanticChecker/SemanticChecker/SemanticChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/SemanticChecker/SemanticChecker/SemanticChecker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/ASTBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/ASTBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/ClassdefNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/ClassdefNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/ExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/ExprNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AST/StringLiterExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AST/StringLiterExprNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/IRBBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/IRBBlock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/IRBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/IRBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/IRFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/IRFunction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/IRPrinter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/IRPrinter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/IRVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/IRVisitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/AllocaInst.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/AllocaInst.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/BinOpInst.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/BinOpInst.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/BitCastInst.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/BitCastInst.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/BranchInst.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/BranchInst.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/CallInst.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/CallInst.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/GetElemPtrInst.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/GetElemPtrInst.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/IRInstruction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/IRInstruction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/IcmpInst.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/IcmpInst.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/LoadInst.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/LoadInst.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/PhiInst.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/PhiInst.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/RetInst.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/RetInst.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/StoreInst.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/instruction/StoreInst.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/operand/constString.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/operand/constString.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/operand/register.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/operand/register.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/operand/string.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/operand/string.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/operand/variable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/operand/variable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRArrayType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRArrayType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRClassType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRClassType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRIntType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRIntType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRPointerType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRPointerType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRVoidType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MxStar_Compiler/llvm_IR/type/IRVoidType.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SemanticChecker/Scope/GlobalScope.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SemanticChecker/Scope/GlobalScope.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SemanticChecker/Scope/Symbol/ClassSymbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SemanticChecker/Scope/Symbol/ClassSymbol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SemanticChecker/Scope/Symbol/FunctSymbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SemanticChecker/Scope/Symbol/FunctSymbol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SemanticChecker/Scope/Symbol/VarSymbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SemanticChecker/Scope/Symbol/VarSymbol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SemanticChecker/SemanticChecker/SemanticChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SemanticChecker/SemanticChecker/SemanticChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/IRBBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/IRBBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/IRBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/IRBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/IRFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/IRFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/IRPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/IRPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/IRVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/IRVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/instruction/AllocaInst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/AllocaInst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/instruction/BinOpInst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/BinOpInst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/instruction/BitCastInst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/BitCastInst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/instruction/BranchInst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/BranchInst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/instruction/CallInst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/CallInst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/instruction/GetElemPtrInst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/GetElemPtrInst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/instruction/IRInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/IRInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/instruction/IcmpInst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/IcmpInst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/instruction/LoadInst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/LoadInst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/instruction/PhiInst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/PhiInst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/instruction/RetInst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/RetInst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/instruction/StoreInst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/instruction/StoreInst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/operand/constString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/operand/constString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/operand/register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/operand/register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/operand/string.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/operand/string.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/operand/variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/operand/variable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/type/IRArrayType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/type/IRArrayType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/type/IRClassType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/type/IRClassType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/type/IRIntType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/type/IRIntType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/type/IRPointerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/type/IRPointerType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/type/IRType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/type/IRType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/llvm_IR/type/IRVoidType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/llvm_IR/type/IRVoidType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/builtin.ll" beforeDir="false" afterPath="$PROJECT_DIR$/test/builtin.ll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/out.ll" beforeDir="false" afterPath="$PROJECT_DIR$/test/out.ll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -220,7 +489,11 @@
       <workItem from="1586172354623" duration="15642000" />
       <workItem from="1586927969491" duration="43130000" />
       <workItem from="1587722714803" duration="47907000" />
-      <workItem from="1588309407145" duration="121146000" />
+      <workItem from="1588309407145" duration="133050000" />
+      <workItem from="1588767686578" duration="53000" />
+      <workItem from="1588904160289" duration="854000" />
+      <workItem from="1589433286873" duration="26390000" />
+      <workItem from="1589548205903" duration="150643000" />
     </task>
     <task id="LOCAL-00001" summary="modify">
       <created>1586089960308</created>
@@ -306,7 +579,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586188827651</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="llvm_ir">
+      <created>1588752140500</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1588752140501</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,7 +599,8 @@
       <path value="$PROJECT_DIR$/Compiler-2020-local-judge/testcase" />
     </ignored-roots>
     <MESSAGE value="modify" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify" />
+    <MESSAGE value="llvm_ir" />
+    <option name="LAST_COMMIT_MESSAGE" value="llvm_ir" />
   </component>
   <component name="WindowStateProjectService">
     <state x="0" y="91" key="#Project_Structure" timestamp="1588525776401">
@@ -330,14 +611,14 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="223" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1585025833516" />
-    <state x="514" y="235" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588573424209">
+    <state x="514" y="235" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1590157065387">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="514" y="235" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1588573424209" />
-    <state x="373" y="110" key="#com.intellij.ide.util.MemberChooser" timestamp="1588166519331">
+    <state x="514" y="235" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1590157065387" />
+    <state x="373" y="110" key="#com.intellij.ide.util.MemberChooser" timestamp="1590414657655">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="373" y="110" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1588166519331" />
+    <state x="373" y="110" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1590414657655" />
     <state x="172" y="294" width="439" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1586154135227">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -346,10 +627,14 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="115" y="182" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1586943928581" />
-    <state x="372" y="26" key="CommitChangelistDialog2" timestamp="1586188826294">
+    <state x="372" y="26" key="CommitChangelistDialog2" timestamp="1590421844941">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="372" y="26" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1586188826294" />
+    <state x="372" y="26" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1590421844941" />
+    <state x="93" y="100" width="617" height="678" maximized="true" key="DiffContextDialog" timestamp="1590415579794">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="93" y="100" width="617" height="678" maximized="true" key="DiffContextDialog/0.0.1536.864@0.0.1536.864" timestamp="1590415579794" />
     <state x="549" y="188" key="FileChooserDialogImpl" timestamp="1585024465406">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -362,38 +647,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="548" y="138" key="Github.UntrackedFilesDialog/0.0.1536.864@0.0.1536.864" timestamp="1586172586624" />
-    <state width="1493" height="190" key="GridCell.Tab.0.bottom" timestamp="1588751544440">
+    <state width="1493" height="663" key="GridCell.Tab.0.bottom" timestamp="1590418727523">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="190" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1588751544440" />
-    <state width="1493" height="190" key="GridCell.Tab.0.center" timestamp="1588751544440">
+    <state width="1493" height="663" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1590418727523" />
+    <state width="1493" height="663" key="GridCell.Tab.0.center" timestamp="1590418727522">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="190" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1588751544440" />
-    <state width="1493" height="190" key="GridCell.Tab.0.left" timestamp="1588751544439">
+    <state width="1493" height="663" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1590418727522" />
+    <state width="1493" height="663" key="GridCell.Tab.0.left" timestamp="1590418727522">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="190" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1588751544439" />
-    <state width="1493" height="190" key="GridCell.Tab.0.right" timestamp="1588751544440">
+    <state width="1493" height="663" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1590418727522" />
+    <state width="1493" height="663" key="GridCell.Tab.0.right" timestamp="1590418727522">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="190" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1588751544440" />
-    <state width="722" height="233" key="GridCell.Tab.1.bottom" timestamp="1588750824287">
+    <state width="1493" height="663" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1590418727522" />
+    <state width="724" height="284" key="GridCell.Tab.1.bottom" timestamp="1590414684299">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="722" height="233" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1588750824287" />
-    <state width="722" height="233" key="GridCell.Tab.1.center" timestamp="1588750824286">
+    <state width="724" height="284" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1590414684299" />
+    <state width="724" height="284" key="GridCell.Tab.1.center" timestamp="1590414684298">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="722" height="233" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1588750824286" />
-    <state width="722" height="233" key="GridCell.Tab.1.left" timestamp="1588750824286">
+    <state width="724" height="284" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1590414684298" />
+    <state width="724" height="284" key="GridCell.Tab.1.left" timestamp="1590414684298">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="722" height="233" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1588750824286" />
-    <state width="722" height="233" key="GridCell.Tab.1.right" timestamp="1588750824287">
+    <state width="724" height="284" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1590414684298" />
+    <state width="724" height="284" key="GridCell.Tab.1.right" timestamp="1590414684298">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="722" height="233" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1588750824287" />
+    <state width="724" height="284" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1590414684298" />
     <state x="147" y="75" key="MergeDialog" timestamp="1586094947079">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -402,30 +687,30 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="477" y="148" key="MultipleFileMergeDialog/0.0.1536.864@0.0.1536.864" timestamp="1586094947095" />
-    <state x="408" y="130" key="NewModule_or_Project.wizard" timestamp="1586082124990">
+    <state x="408" y="130" key="NewModule_or_Project.wizard" timestamp="1589433917674">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="408" y="130" key="NewModule_or_Project.wizard/0.0.1536.864@0.0.1536.864" timestamp="1586082124990" />
+    <state x="408" y="130" key="NewModule_or_Project.wizard/0.0.1536.864@0.0.1536.864" timestamp="1589433917674" />
     <state x="270" y="75" key="SettingsEditor" timestamp="1586172539405">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="270" y="75" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1586172539405" />
-    <state x="361" y="166" key="Vcs.Push.Dialog.v2" timestamp="1586188834393">
+    <state x="361" y="166" key="Vcs.Push.Dialog.v2" timestamp="1588752145729">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1586188834393" />
+    <state x="361" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1588752145729" />
     <state x="565" y="210" key="chooseDestDirectoryDialog" timestamp="1585303031911">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="565" y="210" key="chooseDestDirectoryDialog/0.0.1536.864@0.0.1536.864" timestamp="1585303031911" />
-    <state x="449" y="257" key="com.intellij.ide.util.TipDialog" timestamp="1588309492865">
+    <state x="449" y="257" key="com.intellij.ide.util.TipDialog" timestamp="1589433275827">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="449" y="257" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1588309492865" />
-    <state x="178" y="350" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586089811977">
+    <state x="449" y="257" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1589433275827" />
+    <state x="178" y="350" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589474129573">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="178" y="350" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864@0.0.1536.864" timestamp="1586089811977" />
+    <state x="178" y="350" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864@0.0.1536.864" timestamp="1589474129573" />
     <state x="123" y="214" key="extract.method.dialog" timestamp="1585798099647">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -438,19 +723,14 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="48" y="199" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1588407302341" />
-    <state x="47" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1588409153719">
+    <state x="46" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1589819058989">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="47" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1588409153719" />
+    <state x="46" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1589819058989" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/SemanticChecker/Scope/GlobalScope.java</url>
-          <line>166</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/SemanticChecker/SemanticChecker/SemanticChecker.java</url>
           <line>283</line>
@@ -458,18 +738,49 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/llvm_IR/IRBuilder.java</url>
-          <line>1017</line>
-          <option name="timeStamp" value="35" />
+          <line>1170</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/riscv/RegAlloca.java</url>
+          <line>443</line>
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/riscv/RvBuilder.java</url>
+          <line>441</line>
+          <option name="timeStamp" value="100" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/riscv/RvBuilder.java</url>
+          <line>454</line>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/riscv/RvBuilder.java</url>
+          <line>182</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/llvm_IR/IRBuilder.java</url>
+          <line>297</line>
+          <option name="timeStamp" value="106" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/optimize/SSADestructor.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="107" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
+        <watch expression="curFunct.regList" />
         <watch expression="curBBlock" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/MxStar_Compiler$Main.ic" NAME="Main Coverage Results" MODIFIED="1588580591677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/MxStar_Compiler$Main.ic" NAME="Main Coverage Results" MODIFIED="1590252724232" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

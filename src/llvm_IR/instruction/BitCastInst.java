@@ -2,17 +2,21 @@ package llvm_IR.instruction;
 
 import llvm_IR.IRVisitor;
 import llvm_IR.operand.IROperand;
+import llvm_IR.operand.register;
 
 public class BitCastInst extends IRInstruction {
-    private IROperand type, type2;
+    private IROperand type;
+    private register type2;
 
-    public BitCastInst(IROperand type, IROperand type2){
+    public BitCastInst(IROperand type, register type2){
         super();
         this.type = type;
         this.type2 = type2;
-        type.addUsedInst(this);
     }
 
+    public IROperand getSrc(){
+        return type;
+    }
 
     @Override
     public String toString() {
@@ -25,8 +29,8 @@ public class BitCastInst extends IRInstruction {
     }
 
     @Override
-    public IROperand getRes() {
-        return null;
+    public register getRes() {
+        return type2;
     }
 
     @Override
@@ -35,6 +39,12 @@ public class BitCastInst extends IRInstruction {
             type = newOp;
             newOp.addUsedInst(this);
         }
+    }
+
+    @Override
+    public void initDefAndUsed() {
+        type.addUsedInst(this);
+        type2.addDefInst(this);
     }
 
     @Override

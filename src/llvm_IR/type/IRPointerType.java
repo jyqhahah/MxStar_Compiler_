@@ -20,7 +20,12 @@ public class IRPointerType extends IRType {
 
     @Override
     public int bytes() {
-        return 8;
+        return 0;
+    }
+
+    @Override
+    public int getBytes() {
+        return 4;
     }
 
     @Override

@@ -37,6 +37,11 @@ public class AllocaInst extends IRInstruction {
     }
 
     @Override
+    public void initDefAndUsed() {
+
+    }
+
+    @Override
     public String toString() {
         return reg.toString() + " = alloca " + type.toString();
     }

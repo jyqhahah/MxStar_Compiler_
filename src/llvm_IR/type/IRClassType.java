@@ -38,15 +38,20 @@ public class IRClassType extends IRType {
 
     @Override
     public int bytes() {
-        int ret = 0;
-        for (var memb : member){
-            ret += memb.bytes();
-        }
-        return ret;
+        return 0;
     }
 
     @Override
     public void accept(IRVisitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public int getBytes() {
+        int ret = 0;
+        for (var memb : member){
+            ret += memb.getBytes();
+        }
+        return ret;
     }
 }

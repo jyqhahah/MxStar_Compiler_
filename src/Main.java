@@ -10,17 +10,26 @@ import llvm_IR.IRBBlock;
 import llvm_IR.IRBuilder;
 import llvm_IR.IRModule;
 import llvm_IR.IRPrinter;
+import optimize.CFGSimplifier;
+import optimize.Dominator;
+import optimize.SSAConstructor;
+import optimize.SSADestructor;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import parser.*;
+import riscv.RegAlloca;
+import riscv.RvBuilder;
+import riscv.RvModule;
+import riscv.RvPrinter;
+import riscv.operand.RvPhyReg;
 import utility.*;
 
 public class Main {
     public static void main(String[] args)throws IOException{
         errorReminder errorReminder = new errorReminder();
-//        InputStream in = System.in;
-        InputStream in = new FileInputStream("data.in");
+        InputStream in = System.in;
+        //InputStream in = new FileInputStream("data.in");
         CharStream charStream = CharStreams.fromStream(in);
 
 
@@ -49,7 +58,25 @@ public class Main {
         IRBuilder irBuilder = new IRBuilder(scope, stringType);
         irBuilder.visit(root);
         IRModule irModule = irBuilder.getModule();
-        IRPrinter irPrinter = new IRPrinter();
-        irPrinter.visit(irModule);
+
+        CFGSimplifier cfg = new CFGSimplifier(irModule);
+        Dominator dom = new Dominator(irModule);
+        SSAConstructor ssaConstructor = new SSAConstructor(irModule);
+        SSADestructor ssaDestructor = new SSADestructor(irModule);
+        cfg.run();
+        dom.run();
+        ssaConstructor.run();
+        ssaDestructor.run();
+        //IRPrinter irPrinter = new IRPrinter();
+        //irPrinter.visit(irModule);
+        //System.out.println(1);
+        RvBuilder rvBuilder = new RvBuilder(irModule);
+        RvModule rvModule = rvBuilder.run();
+        //System.out.println(2);
+        RegAlloca alloca = new RegAlloca(rvModule);
+        alloca.run();
+        //System.out.println(3);
+        RvPrinter rvPrinter = new RvPrinter();
+        rvPrinter.visit(rvModule);
     }
 }

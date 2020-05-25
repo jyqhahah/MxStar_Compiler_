@@ -17,10 +17,6 @@ public class PhiInst extends IRInstruction {
         this.reg = reg;
         this.bblocks = bblocks;
         this.operands = operands;
-        for(var bblock : bblocks)
-            bblock.addUsedPhiInst(this);
-        for(var operand : operands)
-            operand.addUsedInst(this);
     }
 
 
@@ -43,8 +39,16 @@ public class PhiInst extends IRInstruction {
         visitor.visit(this);
     }
 
+    public ArrayList<IROperand> getOperands() {
+        return operands;
+    }
+
+    public ArrayList<IRBBlock> getBblocks() {
+        return bblocks;
+    }
+
     @Override
-    public IROperand getRes() {
+    public register getRes() {
         return reg;
     }
 
@@ -74,6 +78,15 @@ public class PhiInst extends IRInstruction {
 
     }
 
+    @Override
+    public void initDefAndUsed() {
+        reg.addDefInst(this);
+        for(var op : operands)
+            op.addUsedInst(this);
+        for(var bblock : bblocks)
+            bblock.addUsedPhiInst(this);
+    }
+
     public void replacePhiUsedInst(IRBBlock oldBBlock, IRBBlock newBBlock){
         boolean flag = true;
         for(int i = 0; i<bblocks.size(); ++i){
@@ -85,9 +98,21 @@ public class PhiInst extends IRInstruction {
         if(!flag) newBBlock.addUsedPhiInst(this);
     }
 
-    public void removeUsedAllPhiInst(){
-        for(var bblock : bblocks){
+    public void removeUsedAllPhiInst(IRBBlock bblock){
+        int index = bblocks.indexOf(bblock);
+        if(index != -1){
+            bblocks.remove(index);
+            operands.remove(index);
+        }
+    }
+
+    public void simplify(){
+        if(bblocks.size() == 1){
+            IROperand operand = operands.get(0);
+            reg.replaceUsedInst(operand);
+            IRBBlock bblock = bblocks.get(0);
             bblock.removeUsedPhiInst(this);
+            removeAll();
         }
     }
 

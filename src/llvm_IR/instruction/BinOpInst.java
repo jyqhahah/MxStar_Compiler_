@@ -2,24 +2,24 @@ package llvm_IR.instruction;
 
 import llvm_IR.IRVisitor;
 import llvm_IR.operand.IROperand;
+import llvm_IR.operand.register;
 import llvm_IR.type.BinOpType;
 
 public class BinOpInst extends IRInstruction {
     private IROperand left, right;
-    private IROperand res;
+    private register res;
     private BinOpType type;
 
-    public BinOpInst(IROperand left, IROperand right, IROperand res, BinOpType type){
+    public BinOpInst(IROperand left, IROperand right, register res, BinOpType type){
         super();
         this.left = left;
         this.right = right;
         this.res = res;
         this.type = type;
-        left.addUsedInst(this);
-        right.addUsedInst(this);
     }
 
-    public IROperand getRes() {
+    @Override
+    public register getRes() {
         return res;
     }
 
@@ -46,6 +46,13 @@ public class BinOpInst extends IRInstruction {
     }
 
     @Override
+    public void initDefAndUsed() {
+        left.addUsedInst(this);
+        right.addUsedInst(this);
+        res.addDefInst(this);
+    }
+
+    @Override
     public void removeAllDef() {
 
     }
@@ -56,6 +63,10 @@ public class BinOpInst extends IRInstruction {
 
     public IROperand getRight() {
         return right;
+    }
+
+    public BinOpType getType() {
+        return type;
     }
 
     @Override

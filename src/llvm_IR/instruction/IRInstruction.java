@@ -3,10 +3,14 @@ package llvm_IR.instruction;
 import llvm_IR.IRBBlock;
 import llvm_IR.IRVisitor;
 import llvm_IR.operand.IROperand;
+import llvm_IR.operand.register;
+import riscv.instruction.RvInstruction;
 
 abstract public class IRInstruction {
     protected IRBBlock curBBlock;
     protected IRInstruction prev, next;
+    protected RvInstruction rvInst;
+    protected boolean isIgnored;
 
     public IRInstruction(){
         this.prev = null;
@@ -51,11 +55,29 @@ abstract public class IRInstruction {
 
     public abstract void accept(IRVisitor visitor);
 
-    public abstract IROperand getRes();
+    public abstract register getRes();
 
     public abstract void replaceUsedInst(IROperand oldOp, IROperand newOp);
 
     public abstract void removeAllUsed();
 
     public abstract void removeAllDef();
+
+    public RvInstruction getRvInst() {
+        return rvInst;
+    }
+
+    public boolean isIgnored() {
+        return isIgnored;
+    }
+
+    public abstract void initDefAndUsed();
+
+    public void setRvInst(RvInstruction rvInst) {
+        this.rvInst = rvInst;
+    }
+
+    public void setIgnored(boolean ignored) {
+        isIgnored = ignored;
+    }
 }

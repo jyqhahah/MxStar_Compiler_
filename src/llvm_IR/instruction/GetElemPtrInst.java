@@ -2,25 +2,27 @@ package llvm_IR.instruction;
 
 import llvm_IR.IRVisitor;
 import llvm_IR.operand.IROperand;
+import llvm_IR.operand.register;
 import llvm_IR.type.IRPointerType;
 import llvm_IR.type.IRType;
 
 import java.util.ArrayList;
 
 public class GetElemPtrInst extends IRInstruction {
-    private IROperand ptr, res;
+    private IROperand ptr;
+    private register res;
     private ArrayList<IROperand> index;
 
-    public GetElemPtrInst(IROperand res, IROperand ptr, ArrayList<IROperand> index){
+    public GetElemPtrInst(register res, IROperand ptr, ArrayList<IROperand> index){
         super();
         this.ptr = ptr;
         this.res = res;
         this.index = index;
-        ptr.addUsedInst(this);
-        for(var tmp : index)
-            tmp.addUsedInst(this);
     }
 
+    public int getBytes(){
+        return ((IRPointerType)ptr.getType()).getPointerType().getBytes();
+    }
 
     @Override
     public String toString() {
@@ -48,8 +50,16 @@ public class GetElemPtrInst extends IRInstruction {
         visitor.visit(this);
     }
 
+    public IROperand getPtr() {
+        return ptr;
+    }
+
+    public ArrayList<IROperand> getIndex() {
+        return index;
+    }
+
     @Override
-    public IROperand getRes() {
+    public register getRes() {
         return res;
     }
 
@@ -67,6 +77,14 @@ public class GetElemPtrInst extends IRInstruction {
             }
         }
         if(!flag) newOp.addUsedInst(this);
+    }
+
+    @Override
+    public void initDefAndUsed() {
+        res.addDefInst(this);
+        ptr.addUsedInst(this);
+        for(var ind : index)
+            ind.addUsedInst(this);
     }
 
     @Override

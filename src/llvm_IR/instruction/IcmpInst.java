@@ -2,26 +2,29 @@ package llvm_IR.instruction;
 
 import llvm_IR.IRVisitor;
 import llvm_IR.operand.IROperand;
+import llvm_IR.operand.register;
 import llvm_IR.type.BinOpType;
 import llvm_IR.type.IcmpType;
 
 public class IcmpInst extends IRInstruction {
     private IROperand left, right;
-    private IROperand res;
+    private register res;
     private IcmpType type;
 
-    public IcmpInst(IROperand left, IROperand right, IROperand res, IcmpType type){
+    public IcmpInst(IROperand left, IROperand right, register res, IcmpType type){
         super();
         this.left = left;
         this.right = right;
         this.res = res;
         this.type = type;
-        left.addUsedInst(this);
-        right.addUsedInst(this);
+    }
+
+    public IcmpType getType() {
+        return type;
     }
 
     @Override
-    public IROperand getRes() {
+    public register getRes() {
         return res;
     }
 
@@ -48,6 +51,13 @@ public class IcmpInst extends IRInstruction {
     @Override
     public void removeAllDef() {
 
+    }
+
+    @Override
+    public void initDefAndUsed() {
+        left.addUsedInst(this);
+        right.addUsedInst(this);
+        res.addDefInst(this);
     }
 
     public IROperand getLeft() {

@@ -3,21 +3,20 @@ package llvm_IR.instruction;
 import llvm_IR.IRFunction;
 import llvm_IR.IRVisitor;
 import llvm_IR.operand.IROperand;
+import llvm_IR.operand.register;
 
 import java.util.ArrayList;
 
 public class CallInst extends IRInstruction {
     private IRFunction funct;
-    private IROperand ret;
+    private register ret;
     private ArrayList<IROperand> paras;
 
-    public CallInst(IRFunction funct, ArrayList<IROperand> paras, IROperand ret){
+    public CallInst(IRFunction funct, ArrayList<IROperand> paras, register ret){
         super();
         this.funct = funct;
         this.paras = paras;
         this.ret = ret;
-        for(var para : paras)
-            para.addUsedInst(this);
     }
 
     @Override
@@ -42,8 +41,16 @@ public class CallInst extends IRInstruction {
     }
 
     @Override
-    public IROperand getRes() {
+    public register getRes() {
         return ret;
+    }
+
+    public IRFunction getFunct() {
+        return funct;
+    }
+
+    public ArrayList<IROperand> getParas() {
+        return paras;
     }
 
     @Override
@@ -56,6 +63,14 @@ public class CallInst extends IRInstruction {
             }
         }
         if(!flag) newOp.addUsedInst(this);
+    }
+
+    @Override
+    public void initDefAndUsed() {
+        if(ret != null)
+            ret.addDefInst(this);
+        for(var para : paras)
+            para.addUsedInst(this);
     }
 
     @Override

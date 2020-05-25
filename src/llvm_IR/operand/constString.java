@@ -9,12 +9,6 @@ public class constString extends IROperand {
 
     public constString(String str){
         super(new IRPointerType(new IRIntType(8)));
-        str = str.replace("\\", "\\5C");
-        str = str.replace("\n", "\\0A");
-        str = str.replace("\0", "\\00");
-        str = str.replace("\t", "\\09");
-        str = str.replace("\"", "\\22");
-        str = "c\"" + str + "\"";
         this.str = str;
     }
 
@@ -24,7 +18,14 @@ public class constString extends IROperand {
 
     @Override
     public String toString() {
-        return str;
+        String tmp = str;
+        tmp = tmp.replace("\\", "\\5C");
+        tmp = tmp.replace("\n", "\\0A");
+        tmp = tmp.replace("\0", "\\00");
+        tmp = tmp.replace("\t", "\\09");
+        tmp = tmp.replace("\"", "\\22");
+        tmp = "c\"" + tmp + "\"";
+        return tmp;
     }
 
     @Override

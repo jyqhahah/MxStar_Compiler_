@@ -145,6 +145,7 @@ public class IRBuilder implements ASTVisitor {
         if(!(curBBlock.getRear() instanceof BranchInst)) curBBlock.addInst(new BranchInst(returnBBlock, curBBlock));
         curBBlock = returnBBlock;
         curFunct.addBBlocks(returnBBlock);
+        curFunct.setExitBBlock(returnBBlock);
         curBBlock.addInst(new RetInst(null));
         for(var funct : defList){
             if(funct instanceof FuncdefNode || funct instanceof ClassdefNode) funct.accept(this);
@@ -208,7 +209,8 @@ public class IRBuilder implements ASTVisitor {
             curFunct.addRegs(retAddress);
         }
         ArrayList<StatmentNode> stmts = node.getStatmentNodeArrayList();
-        for(var stmt : stmts) stmt.accept(this);
+        for(var stmt : stmts)
+            stmt.accept(this);
         if(!(curBBlock.getRear() instanceof BranchInst)){
             if(retType instanceof IRIntType){
                 int bytes = ((IRIntType)retType).bytes();
@@ -223,6 +225,7 @@ public class IRBuilder implements ASTVisitor {
         }
         curBBlock = returnBBlock;
         curFunct.addBBlocks(returnBBlock);
+        curFunct.setExitBBlock(returnBBlock);
         if(retType instanceof IRVoidType) curBBlock.addInst(new RetInst(null));
         else {
             register retValue = new register(retType, "returnValue");
@@ -255,7 +258,8 @@ public class IRBuilder implements ASTVisitor {
         FuncdefNode constructor = node.getConsDef();
         if(constructor != null) constructor.accept(this);
         ArrayList<FuncdefNode> FunctList = node.getFuncList();
-        for(var funct : FunctList) funct.accept(this);
+        for(var funct : FunctList)
+            funct.accept(this);
     }
 
     @Override
@@ -590,6 +594,7 @@ public class IRBuilder implements ASTVisitor {
         else if(bi_op == BinaryOperator.ASSIGN){
             left.accept(this);right.accept(this);
             IROperand lReg = left.getRes(), rReg = right.getRes();
+            //System.out.println(node.getLeft().getAddress() == null);
             curBBlock.addInst(new StoreInst(rReg, node.getLeft().getAddress()));
             node.setRes(rReg);
         }
@@ -675,8 +680,8 @@ public class IRBuilder implements ASTVisitor {
             register memberReg = new register(memberType, varSymbol.getIdentifier());
             curBBlock.addInst(new LoadInst(memberReg, memberAddress));
             curFunct.addRegs(memberReg);
+            node.setAddress(memberAddress);
             node.setRes(memberReg);
-            node.setRes(memberAddress);
         }
         else{
             register varAddress = varSymbol.getAddress();
@@ -697,70 +702,39 @@ public class IRBuilder implements ASTVisitor {
         IROperand exprReg = expr.getRes();
         if(un_op == UnaryOperator.POS) node.setRes(exprReg);
         else if(un_op == UnaryOperator.NEG){
-            if(exprReg instanceof constInt){
-                constInt tmp = (constInt)exprReg;
-                node.setRes(new constInt(-tmp.getValue()));
-            }
-            else{
-                register reg = new register(new IRIntType(32), "neg");
-                curBBlock.addInst(new BinOpInst(new constInt(0), exprReg, reg, BinOpType.sub));
-                curFunct.addRegs(reg);
-                node.setRes(reg);
-            }
+            register reg = new register(new IRIntType(32), "neg");
+            curBBlock.addInst(new BinOpInst(new constInt(0), exprReg, reg, BinOpType.sub));
+            curFunct.addRegs(reg);
+            node.setRes(reg);
         }
         else if(un_op == UnaryOperator.PREFIXSUB){
-            IROperand reg;
-            if(exprReg instanceof constInt){
-                constInt tmp = (constInt)exprReg;
-                reg = new constInt(tmp.getValue()-1);
-            }
-            else {
-                reg = new register(new IRIntType(32), "prefixDecr");
-                curBBlock.addInst(new BinOpInst(exprReg, new constInt(1), reg, BinOpType.sub));
-                curFunct.addRegs((register)reg);
-            }
+            register reg = new register(new IRIntType(32), "prefixDecr");
+            curBBlock.addInst(new BinOpInst(exprReg, new constInt(1), reg, BinOpType.sub));
+            curFunct.addRegs((register)reg);
             curBBlock.addInst(new StoreInst(reg, expr.getAddress()));
             node.setAddress(expr.getAddress());
             node.setRes(reg);
         }
         else if(un_op == UnaryOperator.PREFIXADD){
-            IROperand reg;
-            if(exprReg instanceof constInt){
-                constInt tmp = (constInt)exprReg;
-                reg = new constInt(tmp.getValue()+1);
-            }
-            else {
-                reg = new register(new IRIntType(32), "prefixIncr");
-                curBBlock.addInst(new BinOpInst(exprReg, new constInt(1), reg, BinOpType.add));
-                curFunct.addRegs((register)reg);
-            }
+            register reg = new register(new IRIntType(32), "prefixIncr");
+            curBBlock.addInst(new BinOpInst(exprReg, new constInt(1), reg, BinOpType.add));
+            curFunct.addRegs((register)reg);
             curBBlock.addInst(new StoreInst(reg, expr.getAddress()));
             node.setAddress(expr.getAddress());
             node.setRes(reg);
         }
         else if(un_op == UnaryOperator.LOGICALNOT){
-            if(exprReg instanceof constBool){
-                constBool tmp = (constBool)exprReg;
-                node.setRes(new constBool(!tmp.getValue()));
-            }
-            else{
-                register reg = new register(new IRIntType(1), "logicalNot");
-                curBBlock.addInst(new BinOpInst(exprReg, new constBool(true), reg, BinOpType.xor));
-                curFunct.addRegs(reg);
-                node.setRes(reg);
-            }
+            register reg = new register(new IRIntType(1), "logicalNot");
+            curBBlock.addInst(new BinOpInst(exprReg, new constBool(true), reg, BinOpType.xor));
+            curFunct.addRegs(reg);
+            node.setRes(reg);
+
         }
         else if(un_op == UnaryOperator.BITWISENEG){
-            if(exprReg instanceof constInt){
-                constInt tmp = (constInt)exprReg;
-                node.setRes(new constInt(~tmp.getValue()));
-            }
-            else{
-                register reg = new register(new IRIntType(32), "bitwiseNot");
-                curBBlock.addInst(new BinOpInst(new constInt(-1), exprReg, reg, BinOpType.xor));
-                curFunct.addRegs(reg);
-                node.setRes(reg);
-            }
+            register reg = new register(new IRIntType(32), "bitwiseNot");
+            curBBlock.addInst(new BinOpInst(new constInt(-1), exprReg, reg, BinOpType.xor));
+            curFunct.addRegs(reg);
+            node.setRes(reg);
         }
     }
 
@@ -771,31 +745,17 @@ public class IRBuilder implements ASTVisitor {
         UnaryOperator un_op = node.getOp();
         IROperand exprReg = expr.getRes();
         if(un_op == UnaryOperator.SUFFIXSUB){
-            IROperand reg;
-            if(exprReg instanceof constInt){
-                constInt tmp = (constInt)exprReg;
-                reg = new constInt(tmp.getValue()-1);
-            }
-            else {
-                reg = new register(new IRIntType(32), "suffixDecr");
-                curBBlock.addInst(new BinOpInst(exprReg, new constInt(1), reg, BinOpType.sub));
-                curFunct.addRegs((register)reg);
-            }
+            register reg = new register(new IRIntType(32), "suffixDecr");
+            curBBlock.addInst(new BinOpInst(exprReg, new constInt(1), reg, BinOpType.sub));
+            curFunct.addRegs((register)reg);
             curBBlock.addInst(new StoreInst(reg, expr.getAddress()));
             node.setAddress(expr.getAddress());
             node.setRes(reg);
         }
         else if(un_op == UnaryOperator.SUFFIXADD){
-            IROperand reg;
-            if(exprReg instanceof constInt){
-                constInt tmp = (constInt)exprReg;
-                reg = new constInt(tmp.getValue()+1);
-            }
-            else {
-                reg = new register(new IRIntType(32), "suffixIncr");
-                curBBlock.addInst(new BinOpInst(exprReg, new constInt(1), reg, BinOpType.add));
-                curFunct.addRegs((register)reg);
-            }
+            register reg = new register(new IRIntType(32), "suffixIncr");
+            curBBlock.addInst(new BinOpInst(exprReg, new constInt(1), reg, BinOpType.add));
+            curFunct.addRegs((register)reg);
             curBBlock.addInst(new StoreInst(reg, expr.getAddress()));
             node.setAddress(expr.getAddress());
             node.setRes(reg);
@@ -1095,7 +1055,7 @@ public class IRBuilder implements ASTVisitor {
     @Override
     public void visit(StringLiterExprNode node) {
         string str = module.addString(node.getStringLiter());
-        register reg = new register(new IRPointerType(new IRIntType(8)), "stringLiteral");
+        register reg = new register(new IRPointerType(new IRIntType(8)), "__stringLiteral");
         ArrayList<IROperand> indexList = new ArrayList<>();
         indexList.add(new constInt(0));indexList.add(new constInt(0));
         curBBlock.addInst(new GetElemPtrInst(reg, str, indexList));
@@ -1136,9 +1096,9 @@ public class IRBuilder implements ASTVisitor {
         ExprNode index = indexList.get(0);
         IRType ptrType = type;
         for(int i=0; i<dims; ++i) ptrType = new IRPointerType(ptrType);
-        IROperand mul = new register(new IRIntType(32), "mul");
-        curBBlock.addInst(new BinOpInst(new constInt(((IRPointerType)ptrType).getPointerType().bytes()), index.getRes(), mul, BinOpType.mul));
-        curFunct.addRegs((register)mul);
+        register mul = new register(new IRIntType(32), "mul");
+        curBBlock.addInst(new BinOpInst(new constInt(((IRPointerType)ptrType).getPointerType().getBytes()), index.getRes(), mul, BinOpType.mul));
+        curFunct.addRegs(mul);
         register add = new register(new IRIntType(32), "add");
         curBBlock.addInst(new BinOpInst(mul, new constInt(4), add, BinOpType.add));
         curFunct.addRegs(add);
@@ -1202,18 +1162,22 @@ public class IRBuilder implements ASTVisitor {
     public register classCreator(IRType type, ArrayList<ExprNode> indexList, int dims, IRFunction constructor){
         if(dims == 0){
             register malloc8 = new register(new IRPointerType(new IRIntType(8)), "malloc8");
-            ArrayList<IROperand> tmpList = new ArrayList<>(); tmpList.add(new constInt(type.bytes()));
+            curFunct.addRegs(malloc8);
+            ArrayList<IROperand> tmpList = new ArrayList<>(); tmpList.add(new constInt(type.getBytes()));
             curBBlock.addInst(new CallInst(mallocFunct, tmpList, malloc8));
             register malloc = new register(new IRPointerType(type), "malloc");
             curBBlock.addInst(new BitCastInst(malloc8, malloc));
             curFunct.addRegs(malloc);
-            if(constructor != null) curBBlock.addInst(new CallInst(constructor, new ArrayList<>(), malloc));
+            if(constructor != null){
+                ArrayList<IROperand> tmpList1 = new ArrayList<>();tmpList1.add(malloc);
+                curBBlock.addInst(new CallInst(constructor, tmpList1, null));
+            }
             return malloc;
         }
         ExprNode index = indexList.get(0);
         IRType ptrType = new IRPointerType(type);
         for(int i=0; i<dims; ++i) ptrType = new IRPointerType(ptrType);
-        IROperand mul = new register(new IRIntType(32), "mul");
+        register mul = new register(new IRIntType(32), "mul");
         curBBlock.addInst(new BinOpInst(new constInt(8), index.getRes(), mul, BinOpType.mul));
         curFunct.addRegs((register)mul);
         register add = new register(new IRIntType(32), "add");

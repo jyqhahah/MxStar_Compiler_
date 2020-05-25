@@ -24,6 +24,7 @@ public interface IRVisitor {
     public abstract void visit(BitCastInst node);
     public abstract void visit(GetElemPtrInst node);
     public abstract void visit(PhiInst node);
+    public abstract void visit(MoveInst node);
 
     public abstract void visit(IROperand node);
     public abstract void visit(constInt node);

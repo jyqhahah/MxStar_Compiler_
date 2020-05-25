@@ -3,6 +3,8 @@ package llvm_IR.instruction;
 import llvm_IR.IRBBlock;
 import llvm_IR.IRVisitor;
 import llvm_IR.operand.IROperand;
+import llvm_IR.operand.constBool;
+import llvm_IR.operand.register;
 
 public class BranchInst extends IRInstruction {
     public IRBBlock trueBBlock, falseBBlock;
@@ -10,8 +12,6 @@ public class BranchInst extends IRInstruction {
 
     public BranchInst(IRBBlock trueBBlock, IRBBlock curBBlock){
         this.trueBBlock = trueBBlock;
-        curBBlock.addSuccBBlock(trueBBlock);
-        trueBBlock.addPredBBlock(curBBlock);
     }
 
     public BranchInst(IRBBlock trueBBlock, IRBBlock falseBBlock, IROperand cond, IRBBlock curBBlock){
@@ -19,36 +19,74 @@ public class BranchInst extends IRInstruction {
         this.trueBBlock = trueBBlock;
         this.falseBBlock = falseBBlock;
         this.cond = cond;
-        curBBlock.addSuccBBlock(trueBBlock);
-        curBBlock.addSuccBBlock(falseBBlock);
-        trueBBlock.addPredBBlock(curBBlock);
-        falseBBlock.addPredBBlock(curBBlock);
-        cond.addUsedInst(this);
     }
 
     public IROperand getCond() {
         return cond;
     }
 
+    public void removeCond(){
+        if(cond!=null){
+            cond.removeUsedInst(this);
+            cond = null;
+        }
+    }
+
+    public void removeTrue(){
+        if(trueBBlock != null){
+            trueBBlock.removeIncomingPhi(curBBlock);
+            curBBlock.removeSuccBBlock(trueBBlock);
+            trueBBlock.removePrevBBlock(curBBlock);
+            trueBBlock = null;
+        }
+    }
+
+    public void removeFalse(){
+        if(falseBBlock != null){
+            falseBBlock.removeIncomingPhi(curBBlock);
+            curBBlock.removeSuccBBlock(falseBBlock);
+            falseBBlock.removePrevBBlock(curBBlock);
+            falseBBlock = null;
+        }
+    }
+
+    public void replaceBBlock(IRBBlock oldBBlock, IRBBlock newBBlock){
+        if(trueBBlock == oldBBlock)
+            trueBBlock = newBBlock;
+        if(falseBBlock == oldBBlock)
+            falseBBlock = newBBlock;
+    }
+
     public void setTrue(){
-        curBBlock.removeSuccBBlock(falseBBlock);
-        falseBBlock.removePrevBBlock(curBBlock);
-        falseBBlock = null;
-        removeAllUsed();
-        cond = null;
+        removeCond();
+        removeFalse();
     }
 
     public void setFalse(){
-        curBBlock.removeSuccBBlock(trueBBlock);
-        trueBBlock.removePrevBBlock(curBBlock);
-        trueBBlock = falseBBlock;
-        falseBBlock = null;
-        removeAllUsed();
-        cond = null;
+        removeCond();
+        removeTrue();
+    }
+
+    public IRBBlock getTrueBBlock() {
+        return trueBBlock;
+    }
+
+    public IRBBlock getFalseBBlock() {
+        return falseBBlock;
+    }
+
+    public void removeBBlock(IRBBlock bblock){
+        if(trueBBlock == bblock){
+            removeCond();
+            trueBBlock = falseBBlock;
+            falseBBlock = null;
+        }
+        if(falseBBlock == bblock)
+            removeCond();
     }
 
     @Override
-    public IROperand getRes() {
+    public register getRes() {
         return null;
     }
 
@@ -58,6 +96,29 @@ public class BranchInst extends IRInstruction {
             cond = newOp;
             oldOp.removeUsedInst(this);
             newOp.addUsedInst(this);
+            if(newOp instanceof constBool){
+                cond = null;
+                if(((constBool)newOp).getValue())
+                    removeFalse();
+                else{
+                    removeTrue();
+                    trueBBlock = falseBBlock;
+                    falseBBlock = null;
+                }
+            }
+        }
+    }
+
+    @Override
+    public void initDefAndUsed() {
+        if(cond != null)cond.addUsedInst(this);
+        if(trueBBlock != null){
+            curBBlock.addSuccBBlock(trueBBlock);
+            trueBBlock.addPredBBlock(curBBlock);
+        }
+        if(falseBBlock != null){
+            curBBlock.addSuccBBlock(falseBBlock);
+            falseBBlock.addPredBBlock(curBBlock);
         }
     }
 

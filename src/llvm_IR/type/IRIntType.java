@@ -24,6 +24,10 @@ public class IRIntType extends IRType {
         return bytes;
     }
 
+    public int getBytes(){
+        return 4;
+    }
+
     @Override
     public void accept(IRVisitor visitor) {
         visitor.visit(this);

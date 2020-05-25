@@ -2,19 +2,20 @@ package llvm_IR.instruction;
 
 import llvm_IR.IRVisitor;
 import llvm_IR.operand.IROperand;
+import llvm_IR.operand.register;
 
 public class LoadInst extends IRInstruction {
-    private IROperand ptr, res;
+    private IROperand ptr;
+    private register res;
 
-    public LoadInst(IROperand res, IROperand ptr){
+    public LoadInst(register res, IROperand ptr){
         super();
         this.ptr = ptr;
         this.res = res;
-        ptr.addUsedInst(this);
     }
 
     @Override
-    public IROperand getRes() {
+    public register getRes() {
         return res;
     }
 
@@ -34,6 +35,12 @@ public class LoadInst extends IRInstruction {
     @Override
     public void removeAllDef() {
 
+    }
+
+    @Override
+    public void initDefAndUsed() {
+        res.addDefInst(this);
+        ptr.addUsedInst(this);
     }
 
     public IROperand getPtr() {

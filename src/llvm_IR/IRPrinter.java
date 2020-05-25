@@ -110,6 +110,11 @@ public class IRPrinter implements IRVisitor {
     }
 
     @Override
+    public void visit(MoveInst node) {
+        printWriter.println(tab+node.toString());
+    }
+
+    @Override
     public void visit(IROperand node) {
 
     }

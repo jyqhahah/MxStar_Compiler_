@@ -18,4 +18,9 @@ public class IRVoidType extends IRType {
     public void accept(IRVisitor visitor) {
         visitor.visit(this);
     }
+
+    @Override
+    public int getBytes() {
+        return 0;
+    }
 }

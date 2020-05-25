@@ -4,9 +4,11 @@ import llvm_IR.IRPrinter;
 import llvm_IR.IRVisitor;
 import llvm_IR.type.IRPointerType;
 import llvm_IR.type.IRType;
+import riscv.operand.RvVariable;
 
 public class variable extends register {
     private IROperand initValue;
+    private RvVariable rvVariable;
 
     public variable (IRType type, String Identifier){
         super(type, Identifier);
@@ -14,6 +16,18 @@ public class variable extends register {
 
     public void setInitValue(IROperand initValue) {
         this.initValue = initValue;
+    }
+
+    public IROperand getInitValue() {
+        return initValue;
+    }
+
+    public RvVariable getRvVariable() {
+        return rvVariable;
+    }
+
+    public void setRvVariable(RvVariable rvVariable) {
+        this.rvVariable = rvVariable;
     }
 
     @Override
