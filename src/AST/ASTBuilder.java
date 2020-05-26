@@ -247,7 +247,7 @@ public class ASTBuilder extends MxStarBaseVisitor<ASTNode> {
     public ASTNode visitWrong_creator(MxStarParser.Wrong_creatorContext ctx) {
         Location loc = new Location(ctx.getStart());
         errorReminder.error(loc, "invalid creator");
-        System.err.println("Invalid creator" + ctx.getText());
+        //System.err.println("Invalid creator" + ctx.getText());
         ArrayList<ExprNode> sz = new ArrayList<>();
         for(var tmp : ctx.expr()){
             sz.add((ExprNode)visit(tmp));

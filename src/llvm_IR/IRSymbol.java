@@ -19,7 +19,8 @@ public class IRSymbol {
         else if(object instanceof register)
             ((register)object).setIdentifier(Identifier+"."+IdArray.size());
         else
-            System.err.println("IRSymbol error");
+            return;
+            //System.err.println("IRSymbol error");
         IdArray.add(object);
     }
 }

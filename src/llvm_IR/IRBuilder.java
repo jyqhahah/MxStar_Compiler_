@@ -750,7 +750,7 @@ public class IRBuilder implements ASTVisitor {
             curFunct.addRegs((register)reg);
             curBBlock.addInst(new StoreInst(reg, expr.getAddress()));
             node.setAddress(expr.getAddress());
-            node.setRes(reg);
+            node.setRes(exprReg);
         }
         else if(un_op == UnaryOperator.SUFFIXADD){
             register reg = new register(new IRIntType(32), "suffixIncr");
@@ -758,7 +758,7 @@ public class IRBuilder implements ASTVisitor {
             curFunct.addRegs((register)reg);
             curBBlock.addInst(new StoreInst(reg, expr.getAddress()));
             node.setAddress(expr.getAddress());
-            node.setRes(reg);
+            node.setRes(exprReg);
         }
     }
 

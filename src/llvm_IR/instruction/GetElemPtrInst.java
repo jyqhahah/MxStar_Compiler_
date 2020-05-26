@@ -40,7 +40,7 @@ public class GetElemPtrInst extends IRInstruction {
             return str.toString();
         }
         else{
-            System.err.println("err in getelemptr");
+            //System.err.println("err in getelemptr");
             return null;
         }
     }
