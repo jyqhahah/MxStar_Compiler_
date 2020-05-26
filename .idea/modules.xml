@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/MxStar_Compiler.iml" filepath="$PROJECT_DIR$/MxStar_Compiler.iml" />
-      <module fileurl="file://$PROJECT_DIR$/antlr/antlr.iml" filepath="$PROJECT_DIR$/antlr/antlr.iml" />
-    </modules>
-  </component>
-</project>
