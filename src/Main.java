@@ -62,10 +62,11 @@ public class Main {
         CFGSimplifier cfg = new CFGSimplifier(irModule);
         Dominator dom = new Dominator(irModule);
         SSAConstructor ssaConstructor = new SSAConstructor(irModule);
-        SSADestructor ssaDestructor = new SSADestructor(irModule);
         cfg.run();
         dom.run();
         ssaConstructor.run();
+        cfg.run();
+        SSADestructor ssaDestructor = new SSADestructor(irModule);
         ssaDestructor.run();
         //IRPrinter irPrinter = new IRPrinter();
         //irPrinter.visit(irModule);

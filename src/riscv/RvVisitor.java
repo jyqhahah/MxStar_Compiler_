@@ -10,6 +10,7 @@ public interface RvVisitor {
     public void visit(RvCmpzInst node);
     public void visit(RvJInst node);
     public void visit(RvJrInst node);
+    public void visit(RvLaInst node);
     public void visit(RvLiInst node);
     public void visit(RvIInst node);
     public void visit(RvLoadInst node);

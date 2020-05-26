@@ -44,6 +44,11 @@ public class RvPrinter implements RvVisitor {
     }
 
     @Override
+    public void visit(RvLaInst node) {
+        printWriter.println(node);
+    }
+
+    @Override
     public void visit(RvLiInst node) {
         printWriter.println(node);
     }

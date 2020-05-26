@@ -40,18 +40,19 @@ public class StoreInst extends IRInstruction {
     @Override
     public void initDefAndUsed() {
         ptr.addUsedInst(this);
-        ptr.addDefInst(this);
+        //ptr.addDefInst(this);
         res.addUsedInst(this);
     }
 
     @Override
     public void removeAllUsed() {
         res.removeUsedInst(this);
+        ptr.removeUsedInst(this);
     }
 
     @Override
     public void removeAllDef() {
-        ptr.removeUsedInst(this);
+        //ptr.removeUsedInst(this);
     }
 
     public IROperand getPtr() {

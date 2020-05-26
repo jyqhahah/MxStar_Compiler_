@@ -404,10 +404,11 @@ public class RvBuilder implements IRVisitor {
             if(node.isIgnored())
                 return;
             else{
-                RvVirReg VirReg = curFunct.newVirReg("tmp");
+                //RvVirReg VirReg = curFunct.newVirReg("tmp");
                 RvString str = ((string)ptr).getRvStr();
-                curBBlock.addInst(new RvLuiInst(curBBlock, VirReg, new address(RegisterList.hi, str)));
-                curBBlock.addInst(new RvIInst(curBBlock, RvIInst.i_op.addi, getRvRegister(reg), VirReg, new address(RegisterList.lo, str)));
+                //curBBlock.addInst(new RvLuiInst(curBBlock, VirReg, new address(RegisterList.hi, str)));
+                //curBBlock.addInst(new RvIInst(curBBlock, RvIInst.i_op.addi, getRvRegister(reg), VirReg, new address(RegisterList.lo, str)));
+                curBBlock.addInst(new RvLaInst(curBBlock, getRvRegister(reg), str));
                 return;
             }
         }

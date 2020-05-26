@@ -48,13 +48,13 @@ public class SSAConstructor extends PASS {
                     IRType type = ((IRPointerType)address.getType()).getPointerType();
                     if(!address.isDefined())
                         Inst.removeAll();
-                    HashSet<IRInstruction> defList = address.getDefInstruction();
+                    HashSet<IRInstruction> usedList = address.getUsedInstruction();
                     HashSet<IRBBlock> visitedList = new HashSet<>();
                     HashSet<IRBBlock> phiList = new HashSet<>();
                     Queue<IRBBlock> queue = new LinkedList<>();
-                    for(var def :defList){
-                        if(def instanceof  StoreInst){
-                            IRBBlock defBlock = def.getCurBBlock();
+                    for(var used : usedList){
+                        if((used instanceof  StoreInst)&&((StoreInst)used).getPtr() == address){
+                            IRBBlock defBlock = used.getCurBBlock();
                             if(!visitedList.contains(defBlock)){
                                 visitedList.add(defBlock);
                                 queue.add(defBlock);
