@@ -68,8 +68,8 @@ public class Main {
         cfg.run();
         SSADestructor ssaDestructor = new SSADestructor(irModule);
         ssaDestructor.run();
-        //IRPrinter irPrinter = new IRPrinter();
-        //irPrinter.visit(irModule);
+//        IRPrinter irPrinter = new IRPrinter();
+//        irPrinter.visit(irModule);
         //System.out.println(1);
         RvBuilder rvBuilder = new RvBuilder(irModule);
         RvModule rvModule = rvBuilder.run();

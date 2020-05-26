@@ -955,7 +955,7 @@ public class IRBuilder implements ASTVisitor {
         }
         curBBlock = bodyBBlock;
         IRBBlock update = updateStack, after = afterStack;
-        updateStack = condBBlock; afterStack = afterBBlock;
+        updateStack = stepBBlock; afterStack = afterBBlock;
         node.getStat().accept(this);
         updateStack = update; afterStack = after;
         if(!(curBBlock.getRear() instanceof BranchInst)) curBBlock.addInst(new BranchInst(stepBBlock, curBBlock));
