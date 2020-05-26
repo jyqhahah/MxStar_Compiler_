@@ -42,11 +42,12 @@ public class register extends IROperand {
                 if(!((LoadInst) Inst).getPtr().equals(this) || Inst.getRes().equals(this))
                     return false;
             }
-            if(Inst instanceof StoreInst){
+            else if(Inst instanceof StoreInst){
                 if(!((StoreInst)Inst).getPtr().equals(this) || ((StoreInst)Inst).getValue().equals(this))
                     return false;
             }
-            return false;
+            else
+                return false;
         }
         return true;
     }
