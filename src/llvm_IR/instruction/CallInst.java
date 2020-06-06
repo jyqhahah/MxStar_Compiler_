@@ -74,6 +74,16 @@ public class CallInst extends IRInstruction {
     }
 
     @Override
+    public ArrayList<register> getUsedRegList() {
+        ArrayList<register> regList = new ArrayList<>();
+        for(var para : paras){
+            if(para instanceof register)
+                regList.add((register)para);
+        }
+        return regList;
+    }
+
+    @Override
     public void removeAllUsed() {
         for(var para : paras){
             para.removeUsedInst(this);

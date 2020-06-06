@@ -6,6 +6,8 @@ import llvm_IR.operand.IROperand;
 import llvm_IR.operand.register;
 import llvm_IR.type.IRType;
 
+import java.util.ArrayList;
+
 public class AllocaInst extends IRInstruction {
     private IRType type;
     private register reg;
@@ -39,6 +41,11 @@ public class AllocaInst extends IRInstruction {
     @Override
     public void initDefAndUsed() {
 
+    }
+
+    @Override
+    public ArrayList<register> getUsedRegList() {
+        return new ArrayList<>();
     }
 
     @Override

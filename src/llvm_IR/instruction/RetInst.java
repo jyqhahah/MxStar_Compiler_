@@ -4,6 +4,8 @@ import llvm_IR.IRVisitor;
 import llvm_IR.operand.IROperand;
 import llvm_IR.operand.register;
 
+import java.util.ArrayList;
+
 public class RetInst extends IRInstruction {
     private IROperand value;
 
@@ -43,6 +45,15 @@ public class RetInst extends IRInstruction {
     public void initDefAndUsed() {
         if(value != null)
             value.addUsedInst(this);
+    }
+
+    @Override
+    public ArrayList<register> getUsedRegList() {
+        ArrayList<register> regList = new ArrayList<>();
+        if(value != null && value instanceof register){
+            regList.add((register)value);
+        }
+        return regList;
     }
 
     @Override

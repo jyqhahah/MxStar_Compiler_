@@ -5,6 +5,8 @@ import llvm_IR.operand.IROperand;
 import llvm_IR.operand.register;
 import llvm_IR.type.IRPointerType;
 
+import java.util.ArrayList;
+
 public class StoreInst extends IRInstruction {
     private IROperand ptr, res;
 
@@ -42,6 +44,16 @@ public class StoreInst extends IRInstruction {
         ptr.addUsedInst(this);
         //ptr.addDefInst(this);
         res.addUsedInst(this);
+    }
+
+    @Override
+    public ArrayList<register> getUsedRegList() {
+        ArrayList<register> regList = new ArrayList<>();
+        if(res instanceof register)
+            regList.add((register)res);
+        if(ptr instanceof register)
+            regList.add((register)ptr);
+        return regList;
     }
 
     @Override

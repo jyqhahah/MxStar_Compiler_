@@ -87,6 +87,16 @@ public class PhiInst extends IRInstruction {
             bblock.addUsedPhiInst(this);
     }
 
+    @Override
+    public ArrayList<register> getUsedRegList() {
+        ArrayList<register> regList = new ArrayList<>();
+        for(var operand : operands){
+            if(operand instanceof register)
+                regList.add((register)operand);
+        }
+        return regList;
+    }
+
     public void replacePhiUsedInst(IRBBlock oldBBlock, IRBBlock newBBlock){
         boolean flag = true;
         for(int i = 0; i<bblocks.size(); ++i){

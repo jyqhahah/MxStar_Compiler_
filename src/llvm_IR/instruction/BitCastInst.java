@@ -4,6 +4,8 @@ import llvm_IR.IRVisitor;
 import llvm_IR.operand.IROperand;
 import llvm_IR.operand.register;
 
+import java.util.ArrayList;
+
 public class BitCastInst extends IRInstruction {
     private IROperand type;
     private register type2;
@@ -45,6 +47,14 @@ public class BitCastInst extends IRInstruction {
     public void initDefAndUsed() {
         type.addUsedInst(this);
         type2.addDefInst(this);
+    }
+
+    @Override
+    public ArrayList<register> getUsedRegList() {
+        ArrayList<register> regList = new ArrayList<>();
+        if(type instanceof register)
+            regList.add((register)type);
+        return regList;
     }
 
     @Override

@@ -6,6 +6,8 @@ import llvm_IR.operand.IROperand;
 import llvm_IR.operand.constBool;
 import llvm_IR.operand.register;
 
+import java.util.ArrayList;
+
 public class BranchInst extends IRInstruction {
     public IRBBlock trueBBlock, falseBBlock;
     public IROperand cond;
@@ -23,6 +25,13 @@ public class BranchInst extends IRInstruction {
 
     public IROperand getCond() {
         return cond;
+    }
+
+    public void replaceTF(IRBBlock bblock){
+        if(bblock == trueBBlock)
+            setTrue();
+        else if(bblock == falseBBlock)
+            setFalse();
     }
 
     public void removeCond(){
@@ -120,6 +129,14 @@ public class BranchInst extends IRInstruction {
             curBBlock.addSuccBBlock(falseBBlock);
             falseBBlock.addPredBBlock(curBBlock);
         }
+    }
+
+    @Override
+    public ArrayList<register> getUsedRegList() {
+        ArrayList<register> regList = new ArrayList<>();
+        if(cond != null && cond instanceof register)
+            regList.add((register)cond);
+        return regList;
     }
 
     @Override

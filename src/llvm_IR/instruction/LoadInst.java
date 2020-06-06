@@ -4,6 +4,8 @@ import llvm_IR.IRVisitor;
 import llvm_IR.operand.IROperand;
 import llvm_IR.operand.register;
 
+import java.util.ArrayList;
+
 public class LoadInst extends IRInstruction {
     private IROperand ptr;
     private register res;
@@ -41,6 +43,14 @@ public class LoadInst extends IRInstruction {
     public void initDefAndUsed() {
         res.addDefInst(this);
         ptr.addUsedInst(this);
+    }
+
+    @Override
+    public ArrayList<register> getUsedRegList() {
+        ArrayList<register> regList = new ArrayList<>();
+        if(ptr instanceof register)
+            regList.add((register)ptr);
+        return regList;
     }
 
     public IROperand getPtr() {

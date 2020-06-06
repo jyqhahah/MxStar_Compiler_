@@ -6,6 +6,8 @@ import llvm_IR.operand.register;
 import llvm_IR.type.BinOpType;
 import llvm_IR.type.IcmpType;
 
+import java.util.ArrayList;
+
 public class IcmpInst extends IRInstruction {
     private IROperand left, right;
     private register res;
@@ -58,6 +60,16 @@ public class IcmpInst extends IRInstruction {
         left.addUsedInst(this);
         right.addUsedInst(this);
         res.addDefInst(this);
+    }
+
+    @Override
+    public ArrayList<register> getUsedRegList() {
+        ArrayList<register> regList = new ArrayList<>();
+        if(left instanceof register)
+            regList.add((register)left);
+        if(right instanceof register)
+            regList.add((register) right);
+        return regList;
     }
 
     public IROperand getLeft() {

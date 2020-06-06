@@ -6,6 +6,8 @@ import llvm_IR.operand.IROperand;
 import llvm_IR.operand.register;
 import riscv.instruction.RvInstruction;
 
+import java.util.ArrayList;
+
 abstract public class IRInstruction {
     protected IRBBlock curBBlock;
     protected IRInstruction prev, next;
@@ -72,6 +74,8 @@ abstract public class IRInstruction {
     }
 
     public abstract void initDefAndUsed();
+
+    public abstract ArrayList<register> getUsedRegList();
 
     public void setRvInst(RvInstruction rvInst) {
         this.rvInst = rvInst;

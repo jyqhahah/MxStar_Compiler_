@@ -5,6 +5,8 @@ import llvm_IR.operand.IROperand;
 import llvm_IR.operand.register;
 import llvm_IR.type.BinOpType;
 
+import java.util.ArrayList;
+
 public class BinOpInst extends IRInstruction {
     private IROperand left, right;
     private register res;
@@ -50,6 +52,16 @@ public class BinOpInst extends IRInstruction {
         left.addUsedInst(this);
         right.addUsedInst(this);
         res.addDefInst(this);
+    }
+
+    @Override
+    public ArrayList<register> getUsedRegList() {
+        ArrayList<register> regList = new ArrayList<>();
+        if(left instanceof register)
+            regList.add((register)left);
+        if(right instanceof register)
+            regList.add((register)right);
+        return regList;
     }
 
     @Override

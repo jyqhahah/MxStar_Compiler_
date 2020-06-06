@@ -4,6 +4,8 @@ import llvm_IR.IRVisitor;
 import llvm_IR.operand.IROperand;
 import llvm_IR.operand.register;
 
+import java.util.ArrayList;
+
 public class MoveInst extends IRInstruction {
     private register dest;
     private IROperand src;
@@ -16,6 +18,11 @@ public class MoveInst extends IRInstruction {
     public void initDefAndUsed(){
         dest.addDefInst(this);
         src.addUsedInst(this);
+    }
+
+    @Override
+    public ArrayList<register> getUsedRegList() {
+        return new ArrayList<>();
     }
 
     @Override

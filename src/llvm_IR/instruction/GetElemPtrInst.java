@@ -88,6 +88,18 @@ public class GetElemPtrInst extends IRInstruction {
     }
 
     @Override
+    public ArrayList<register> getUsedRegList() {
+        ArrayList<register> regList = new ArrayList<>();
+        if(ptr instanceof register)
+            regList.add((register)ptr);
+        for(var ind : index){
+            if(ind instanceof register)
+                regList.add((register)ind);
+        }
+        return regList;
+    }
+
+    @Override
     public void removeAllUsed() {
         ptr.removeUsedInst(this);
         for(var ind : index){
