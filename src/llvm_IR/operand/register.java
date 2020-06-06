@@ -8,12 +8,28 @@ import llvm_IR.type.IRType;
 import riscv.operand.RvRegister;
 
 public class register extends IROperand {
+    public enum Status{
+        undefined, multidefined, constant
+    }
+
     protected String Identifier;
     private RvRegister RvReg;
+    public Status status;
+    private IRconst constant;
 
     public register(IRType type, String Identifier){
         super(type);
         this.Identifier = Identifier;
+        status = Status.undefined;
+        constant = null;
+    }
+
+    public IRconst getConstant() {
+        return constant;
+    }
+
+    public void setConstant(IRconst constant) {
+        this.constant = constant;
     }
 
     public String getIdentifier() {

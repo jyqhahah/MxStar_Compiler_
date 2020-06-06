@@ -5,11 +5,10 @@ import llvm_IR.type.IRIntType;
 import llvm_IR.type.IRPointerType;
 import llvm_IR.type.IRVoidType;
 
-public class constNull extends IROperand {
+public class constNull extends IRconst {
     public constNull(){
         super(new IRPointerType(new IRVoidType()));
     }
-
 
     @Override
     public String toString() {
@@ -19,5 +18,10 @@ public class constNull extends IROperand {
     @Override
     public void accept(IRVisitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public boolean valueEqual(IRconst other) {
+        return other instanceof constNull;
     }
 }

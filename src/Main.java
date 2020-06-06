@@ -60,10 +60,12 @@ public class Main {
         Dominator dom = new Dominator(irModule);
         SSAConstructor ssaConstructor = new SSAConstructor(irModule);
         DCE dce = new DCE(irModule);
+        SCCP sccp = new SCCP(irModule);
         cfg.run();
         dom.run();
         ssaConstructor.run();
         dce.run();
+        sccp.run();
         cfg.run();
         SSADestructor ssaDestructor = new SSADestructor(irModule);
         ssaDestructor.run();

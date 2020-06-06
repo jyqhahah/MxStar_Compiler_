@@ -3,7 +3,7 @@ package llvm_IR.operand;
 import llvm_IR.IRVisitor;
 import llvm_IR.type.IRIntType;
 
-public class constBool extends IROperand {
+public class constBool extends IRconst {
     private boolean value;
 
     public constBool(boolean value){
@@ -23,5 +23,10 @@ public class constBool extends IROperand {
     @Override
     public void accept(IRVisitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public boolean valueEqual(IRconst other) {
+        return other instanceof constBool && value == ((constBool)other).getValue();
     }
 }

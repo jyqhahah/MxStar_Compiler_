@@ -4,7 +4,7 @@ import llvm_IR.IRVisitor;
 import llvm_IR.type.IRIntType;
 import llvm_IR.type.IRPointerType;
 
-public class constString extends IROperand {
+public class constString extends IRconst {
     private String str;
 
     public constString(String str){
@@ -31,5 +31,10 @@ public class constString extends IROperand {
     @Override
     public void accept(IRVisitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public boolean valueEqual(IRconst other) {
+        return other instanceof constString && str.equals(((constString)other).getStr());
     }
 }

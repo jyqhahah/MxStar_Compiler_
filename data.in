@@ -1,44 +1,41 @@
 /*
-Test Package: Sema_Local_Preview
-Test Target: Basic
-Author: 16' Yuxi Liu
-Time: 2019-11-11
-Verdict: Success
-Origin Package: Semantic Pretest
+Test Package: Codegen
+Author: Pikachu
+Time: 2020-02-02
+Input:
+=== input ===
+79 35 12
+=== end ===
+Output:
+=== output ===
+<< 23 24 25 26 27 28 29 30 31 32 33 34 (35) 36 37 38 39 40 41 42 43 44 45 46 47 >>
+=== end ===
+ExitCode: 0
+InstLimit: -1
+Origin Package: Codeforces 399A #44003944
 */
+int n;
+int p;
+int k;
+int i;
 int main() {
-    if (vvvvvv()) { }
-    else {
-        int i = vvwvvv();
-        for ( ; !vvvvvv() && vvvvvv() || vvvvvv(); i < vvwvvv()) {
-            println("hahaha");
-        }
-        vvvvwv();
-    }
-    return (vwvvvv() + toString(vvwvvv())).parseInt();
-}
+	n = getInt();
+	p = getInt();
+	k = getInt();
+	if(p-k>1) print("<< ");
+	for(i= p-k; i<=p+k;i++)
+	      if(1<= i && i <= n) {
+	         if(i==p){
+				 print("(");
+				 print(toString(i));
+				 print(") ");
+			 }
+	        else{
+				printInt(i);
+				print(" ");
+			}
+	  }
+	if(p + k < n) print(">> ");
 
-bool vvvvvv() {
-    if (vwvvvv() >= vwvvvv() && vwvvvv() <= vwvvvv()) {
-        return toString(vvwvvv()) == vwvvvv();
-    }
-    return vwvvvv() != vwvvvv();
-}
-
-void vvvvwv() {
-    int tmp = vvwvvv();
-    if ((vvwvvv() ^ vwvvvv().parseInt()) > -(++tmp) || (vvvvvv() == (vwvvvv() + vwvvvv() >= vwvvvv()))) {
-        for ( ; ; ) {
-            break;
-        }
-    }
-    return;
-}
-
-string vwvvvv() {
-    return getString();
-}
-
-int vvwvvv() {
-    return vwvvvv().parseInt() % vwvvvv().parseInt();
+	return 0;
 }

@@ -24,6 +24,7 @@ public class IRBBlock {
     private IRBBlock dom_s, dom_i, father, dom_rs, dom_ri, rfather;
     private int dfn, rdfn;
     private HashSet<IRBBlock> bucket, rbucket, strictDom, strictRDom;
+    private boolean executable;
 
     public IRBBlock(String Identifier){
         this.Identifier = Identifier;
@@ -45,6 +46,7 @@ public class IRBBlock {
         rbucket = new HashSet<>();
         strictDom = new HashSet<>();
         strictRDom = new HashSet<>();
+        executable = false;
     }
 
     public IRFunction getCurFunct() {
@@ -61,6 +63,14 @@ public class IRBBlock {
 
     public IRInstruction getRear() {
         return rear;
+    }
+
+    public void setExecutable() {
+        this.executable = true;
+    }
+
+    public boolean getExecutable(){
+        return executable;
     }
 
     public void setHead(IRInstruction head) {
