@@ -64,7 +64,7 @@ public class DCE extends PASS {
             for(var Inst : InstList){
                 if(!markedList.contains(Inst)){
                     if(Inst instanceof BranchInst){
-                        if(((BranchInst)Inst).getCond() !=null){
+                        if(((BranchInst)Inst).getCond() != null){
                             ((BranchInst)Inst).replaceTF(bblock.getDom_ri());
                         }
                     }

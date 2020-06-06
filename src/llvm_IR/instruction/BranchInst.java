@@ -74,6 +74,8 @@ public class BranchInst extends IRInstruction {
     public void setFalse(){
         removeCond();
         removeTrue();
+        trueBBlock = falseBBlock;
+        falseBBlock = null;
     }
 
     public IRBBlock getTrueBBlock() {

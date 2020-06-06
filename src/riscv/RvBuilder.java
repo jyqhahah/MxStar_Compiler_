@@ -203,8 +203,9 @@ public class RvBuilder implements IRVisitor {
             }
             curBBlock.addInst(new RvJInst(curBBlock, node.getFalseBBlock().getRvBBlock()));
         }
-        else
+        else{
             curBBlock.addInst(new RvJInst(curBBlock, node.getTrueBBlock().getRvBBlock()));
+        }
     }
 
     @Override
