@@ -296,6 +296,9 @@ public class SCCP extends PASS implements IRVisitor {
         BBlockQueue.offer(entryBBlock);
         entryBBlock.setExecutable();
         ArrayList<register> paras = node.getParas();
+        for(register para : paras){
+            para.status = register.Status.multidefined;
+        }
         while(!BBlockQueue.isEmpty() || !regQueue.isEmpty()){
             if(!BBlockQueue.isEmpty())
                 BBlockQueue.poll().accept(this);
