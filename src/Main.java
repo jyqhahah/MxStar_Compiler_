@@ -68,15 +68,9 @@ public class Main {
         cfg.run();
         dom.run();
         ssaConstructor.run();
-        boolean isChanged = true;
-        while(isChanged){
-            isChanged = false;
-            isChanged = isChanged | inl.run();
-            dom.run();
-            isChanged = isChanged | dce.run();
-            isChanged = isChanged | sccp.run();
-            isChanged = isChanged | cfg.run();
-        }
+        dce.run();
+        sccp.run();
+        cfg.run();
         SSADestructor ssaDestructor = new SSADestructor(irModule);
         ssaDestructor.run();
 //        IRPrinter irPrinter = new IRPrinter();
