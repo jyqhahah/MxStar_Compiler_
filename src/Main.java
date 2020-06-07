@@ -47,8 +47,12 @@ public class Main {
         //System.out.println(test.getFunctList().size());
         checker.visit(root);
 
-        if(errorReminder.count() > 0)
-            System.exit(errorReminder.count());
+//        if(errorReminder.count() > 0)
+//            System.exit(errorReminder.count());
+        int count = errorReminder.count();
+        if(args[0].equals("0")) {
+            System.exit(count);
+        }
         //System.out.println("ir start");
         GlobalScope scope = checker.getGlobalScope();
         StringType stringType = checker.getStringType();
@@ -68,9 +72,15 @@ public class Main {
         cfg.run();
         dom.run();
         ssaConstructor.run();
-        dce.run();
-        sccp.run();
-        cfg.run();
+        boolean isChanged = true;
+        while(isChanged){
+            isChanged = false;
+            isChanged = isChanged | inl.run();
+            dom.run();
+            isChanged = isChanged | dce.run();
+            isChanged = isChanged | sccp.run();
+            isChanged = isChanged | cfg.run();
+        }
         SSADestructor ssaDestructor = new SSADestructor(irModule);
         ssaDestructor.run();
 //        IRPrinter irPrinter = new IRPrinter();
