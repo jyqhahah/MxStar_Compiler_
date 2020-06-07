@@ -51,8 +51,9 @@ public class globalvarEliminator extends PASS {
                 }
                 AllocaInst allocaInst = new AllocaInst(((IRPointerType)reg.getType()).getPointerType(), reg);
                 entryBBlock.addInstInHead(allocaInst);
-                for(var used : usedList)
+                for(var used : usedList){
                     used.replaceUsedInst(var, reg);
+                }
             }
         }
         for(var var : removeList)

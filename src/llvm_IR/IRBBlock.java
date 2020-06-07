@@ -237,12 +237,12 @@ public class IRBBlock {
         Inst.setCurBBlock(this);
         Inst.initDefAndUsed();
         if(head != null){
-            rear.setNext(Inst);
-            Inst.setPrev(rear);
-            rear = Inst;
+            head.setPrev(Inst);
+            Inst.setNext(head);
+            head = Inst;
         }
         else
-            head = rear = Inst;
+            head = Inst;
     }
 
     public void addInstNoInit(IRInstruction Inst){
