@@ -57,24 +57,17 @@ public class Main {
         IRModule irModule = irBuilder.getModule();
 
         FunctionInliner inl = new FunctionInliner(irModule);
+        globalvarEliminator gve = new globalvarEliminator(irModule);
         CFGSimplifier cfg = new CFGSimplifier(irModule);
         Dominator dom = new Dominator(irModule);
         SSAConstructor ssaConstructor = new SSAConstructor(irModule);
         DCE dce = new DCE(irModule);
         SCCP sccp = new SCCP(irModule);
         inl.run();
+        gve.run();
         cfg.run();
         dom.run();
         ssaConstructor.run();
-        boolean isChanged = true;
-        while(isChanged){
-            isChanged = false;
-            isChanged = isChanged | inl.run();
-            dom.run();
-            isChanged = isChanged | dce.run();
-            isChanged = isChanged | sccp.run();
-            isChanged = isChanged | cfg.run();
-        }
         dce.run();
         sccp.run();
         cfg.run();
