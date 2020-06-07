@@ -11,18 +11,28 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 public class IRModule  {
+    private IRFunction main;
     private LinkedHashMap<String, IRFunction> FunctList, BuiltInFunctList;
     private LinkedHashMap<String, IRClassType> ClassList;
     private LinkedHashMap<String, variable> VarList;
     private LinkedHashMap<String, string> StringList;
 
     public IRModule(GlobalScope globalScope, StringType stringType){
+        main = null;
         FunctList = new LinkedHashMap<>();
         BuiltInFunctList = new LinkedHashMap<>();
         ClassList = new LinkedHashMap<>();
         VarList = new LinkedHashMap<>();
         StringList = new LinkedHashMap<>();
         initModule(globalScope, stringType);
+    }
+
+    public IRFunction getMain() {
+        return main;
+    }
+
+    public void setMain(IRFunction main) {
+        this.main = main;
     }
 
     public LinkedHashMap<String, string> getStringList() {

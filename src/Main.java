@@ -56,11 +56,13 @@ public class Main {
         irBuilder.visit(root);
         IRModule irModule = irBuilder.getModule();
 
+        FunctionInliner inl = new FunctionInliner(irModule);
         CFGSimplifier cfg = new CFGSimplifier(irModule);
         Dominator dom = new Dominator(irModule);
         SSAConstructor ssaConstructor = new SSAConstructor(irModule);
         DCE dce = new DCE(irModule);
         SCCP sccp = new SCCP(irModule);
+        inl.run();
         cfg.run();
         dom.run();
         ssaConstructor.run();

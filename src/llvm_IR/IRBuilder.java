@@ -171,7 +171,10 @@ public class IRBuilder implements ASTVisitor {
         IRBBlock returnBBlock = new IRBBlock("returnBBlock");
         retBBlock = returnBBlock;
         if(enclosingScope == scope){
-            if(node.getIdentifier().equals("main")) curBBlock.addInst(new CallInst(module.getFunct("__init__"), new ArrayList<>(), null));
+            if(node.getIdentifier().equals("main")) {
+                module.setMain(function);
+                curBBlock.addInst(new CallInst(module.getFunct("__init__"), new ArrayList<>(), null));
+            }
         }
         else if(enclosingScope instanceof ClassSymbol){
             ClassSymbol tmp = (ClassSymbol)enclosingScope;

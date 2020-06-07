@@ -10,12 +10,14 @@ import java.util.ArrayList;
 public class CallInst extends IRInstruction {
     private IRFunction funct;
     private register ret;
+    private boolean isInLined;
     private ArrayList<IROperand> paras;
 
     public CallInst(IRFunction funct, ArrayList<IROperand> paras, register ret){
         super();
         this.funct = funct;
         this.paras = paras;
+        this.isInLined = false;
         this.ret = ret;
     }
 
@@ -51,6 +53,14 @@ public class CallInst extends IRInstruction {
 
     public ArrayList<IROperand> getParas() {
         return paras;
+    }
+
+    public boolean isInLined() {
+        return isInLined;
+    }
+
+    public void setInLined() {
+        isInLined = true;
     }
 
     @Override

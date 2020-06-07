@@ -1,9 +1,6 @@
 package llvm_IR;
 
-import llvm_IR.instruction.BranchInst;
-import llvm_IR.instruction.IRInstruction;
-import llvm_IR.instruction.MoveInst;
-import llvm_IR.instruction.PhiInst;
+import llvm_IR.instruction.*;
 import llvm_IR.operand.register;
 import riscv.RvBBlock;
 
@@ -236,6 +233,22 @@ public class IRBBlock {
         }
     }
 
+    public void addInstNoInit(IRInstruction Inst){
+        if((rear != null)&&(rear instanceof BranchInst)){
+            return;
+        }
+        else{
+            Inst.setCurBBlock(this);
+            if(head != null){
+                rear.setNext(Inst);
+                Inst.setPrev(rear);
+                rear = Inst;
+            }
+            else
+                head = rear = Inst;
+        }
+    }
+
     public IRBBlock getNext() {
         return next;
     }
@@ -261,6 +274,33 @@ public class IRBBlock {
 
     public void addPhiInst(register address, PhiInst phiInst){
         phiMap.put(address, phiInst);
+    }
+
+    public IRBBlock spill(CallInst callInst){
+        IRBBlock spillBBlock = new IRBBlock("spillBBlock");
+        curFunct.addBBlocks(spillBBlock);
+        if(curFunct.getExitBBlock() == this)
+            curFunct.setExitBBlock(spillBBlock);
+        IRInstruction Inst = callInst.getNext(), next;
+        while(Inst != null){
+            next = Inst.getNext();
+            Inst.setPrev(null);
+            Inst.setNext(null);
+            spillBBlock.addInstNoInit(Inst);
+            Inst = next;
+        }
+        callInst.setNext(null);
+        callInst.removeAll();
+        for(var succ : succBBlock){
+            spillBBlock.addSuccBBlock(succ);
+            succ.removePrevBBlock(this);
+            succ.addPredBBlock(spillBBlock);
+        }
+        succBBlock.clear();
+        for(var phiInst : usedPhiInst)
+            phiInst.replacePhiUsedInst(this, spillBBlock);
+        usedPhiInst.clear();
+        return spillBBlock;
     }
 
     public void mergePhiMap(){

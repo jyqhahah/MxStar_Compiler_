@@ -23,6 +23,10 @@ public class AllocaInst extends IRInstruction {
         return reg;
     }
 
+    public IRType getType() {
+        return type;
+    }
+
     @Override
     public void replaceUsedInst(IROperand oldOp, IROperand newOp) {
 
