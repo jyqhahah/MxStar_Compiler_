@@ -12,17 +12,21 @@ import llvm_IR.operand.constBool;
 import java.util.*;
 
 public class CFGSimplifier extends PASS {
+    private boolean isChanged;
+
     public CFGSimplifier(IRModule irModule){
         super(irModule);
     }
 
-    public void run(){
+    public boolean run(){
+        isChanged = false;
         LinkedHashMap<String, IRFunction> functList = irModule.getFunctList();
         for(var entry : functList.entrySet()){
             removeSinglePhi(entry.getValue());
             removeConstBranch(entry.getValue());
             removeUnusedBBlock(entry.getValue());
         }
+        return isChanged;
     }
 
     public void removeSinglePhi(IRFunction function){
@@ -64,6 +68,7 @@ public class CFGSimplifier extends PASS {
             if(succBBlock.size() == 1 && succBBlock.get(0).getPrevBBlock().size() == 1){
                 IRBBlock succ = succBBlock.get(0);
                 head.unionBBlock(succ);
+                isChanged = true;
                 queue.offer(head);
                 continue;
             }
@@ -80,6 +85,7 @@ public class CFGSimplifier extends PASS {
                 irbBlock.removeAll();
                 irbBlock.removeAllInst();
                 irbBlock.removeAllUsedPhi();
+                isChanged = true;
             }
         }
     }

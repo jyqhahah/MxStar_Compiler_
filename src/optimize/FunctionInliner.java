@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 
 public class FunctionInliner extends PASS {
+    private boolean changed;
     private HashMap<IRFunction, Integer> InstNumbers;
     private HashMap<IRFunction, ArrayList<CallInst>> CallMap;
     private HashMap<IRFunction, Integer> InStack;
@@ -29,7 +30,8 @@ public class FunctionInliner extends PASS {
         super(irModule);
     }
 
-    public void run(){
+    public boolean run(){
+        changed = false;
         InstNumbers = new HashMap<>();
         CallMap = new HashMap<>();
         InStack = new HashMap<>();
@@ -89,8 +91,10 @@ public class FunctionInliner extends PASS {
                     bblock = bblock.getNext();
                 }
                 irModule.getFunctList().remove(funct.getIdentifier().substring(1));
+                changed = true;
             }
         }
+        return changed;
     }
 
     public void visit(IRFunction function){
@@ -146,6 +150,7 @@ public class FunctionInliner extends PASS {
     public void inline(IRFunction caller, IRFunction callee, CallInst callInst){
         regRenamer = new HashMap<>();
         bblockRenamer = new HashMap<>();
+        changed = true;
         IRBBlock curBBlock = callInst.getCurBBlock();
         IRBBlock spillBBlock = curBBlock.spill(callInst);
         ArrayList<IRBBlock> bblockList = callee.getBBlockArray();

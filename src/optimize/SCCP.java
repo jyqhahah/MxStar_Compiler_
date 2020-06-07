@@ -13,13 +13,16 @@ import java.util.*;
 public class SCCP extends PASS implements IRVisitor {
     private Queue<IRBBlock> BBlockQueue;
     private Queue<register> regQueue;
+    private boolean isChanged;
 
     public SCCP(IRModule irModule) {
         super(irModule);
     }
 
-    public void run(){
+    public boolean run(){
+        isChanged = false;
         visit(irModule);
+        return isChanged;
     }
 
     @Override
@@ -315,6 +318,7 @@ public class SCCP extends PASS implements IRVisitor {
                 bblock.removeAll();
                 bblock.removeAllInst();
                 bblock.removeAllUsedPhi();
+                isChanged = true;
             }
             else{
                 ArrayList<IRInstruction> InstList = bblock.getInstList();
@@ -323,6 +327,7 @@ public class SCCP extends PASS implements IRVisitor {
                     if(reg != null && reg.status == register.Status.constant){
                         reg.replaceUsedInst(reg.getConstant());
                         Inst.removeAll();
+                        isChanged = true;
                     }
                 }
             }

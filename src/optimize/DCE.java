@@ -13,16 +13,19 @@ public class DCE extends PASS {
     private LinkedHashSet<IRInstruction> markedList;
     private LinkedHashSet<IRBBlock> visited;
 
+    private boolean isChanged;
 
     public DCE(IRModule irModule) {
         super(irModule);
     }
 
-    public void run(){
+    public boolean run(){
+        isChanged = false;
         LinkedHashMap<String, IRFunction> functList = irModule.getFunctList();
         for(var entry : functList.entrySet()){
             visit(entry.getValue());
         }
+        return isChanged;
     }
 
     public void visit(IRFunction function){
@@ -66,10 +69,12 @@ public class DCE extends PASS {
                     if(Inst instanceof BranchInst){
                         if(((BranchInst)Inst).getCond() != null){
                             ((BranchInst)Inst).replaceTF(bblock.getDom_ri());
+                            isChanged = true;
                         }
                     }
                     else{
                         Inst.removeAll();
+                        isChanged = true;
                     }
                 }
             }
