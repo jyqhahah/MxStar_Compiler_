@@ -39,20 +39,23 @@ public class globalvarEliminator extends PASS {
                 }
             }
             if(flag){
-                removeList.add(var);
-                register reg = new register(var.getType(), var.getIdentifier()+"$");
-                assert function != null;
-                IRBBlock entryBBlock = function.getEntryBBlock();
-                function.addRegs(reg);
-                IROperand operand = var.getInitValue();
-                if(operand != null && !(operand instanceof constNull)){
-                    StoreInst storeInst = new StoreInst(operand, reg);
-                    entryBBlock.addInstInHead(storeInst);
-                }
-                AllocaInst allocaInst = new AllocaInst(((IRPointerType)reg.getType()).getPointerType(), reg);
-                entryBBlock.addInstInHead(allocaInst);
-                for(var used : usedList){
-                    used.replaceUsedInst(var, reg);
+                if(function == null)
+                    removeList.add(var);
+                else{
+                    removeList.add(var);
+                    register reg = new register(var.getType(), var.getIdentifier()+"$");
+                    IRBBlock entryBBlock = function.getEntryBBlock();
+                    function.addRegs(reg);
+                    IROperand operand = var.getInitValue();
+                    if(operand != null && !(operand instanceof constNull)){
+                        StoreInst storeInst = new StoreInst(operand, reg);
+                        entryBBlock.addInstInHead(storeInst);
+                    }
+                    AllocaInst allocaInst = new AllocaInst(((IRPointerType)reg.getType()).getPointerType(), reg);
+                    entryBBlock.addInstInHead(allocaInst);
+                    for(var used : usedList){
+                        used.replaceUsedInst(var, reg);
+                    }
                 }
             }
         }
