@@ -32,17 +32,7 @@ public class IRBBlock {
         succBBlock = new ArrayList<>();
         usedPhiInst = new HashSet<>();
         phiMap = new LinkedHashMap<>();
-        dominateList = new ArrayList<>();
-        rdominateList = new ArrayList<>();
-        dfList = new HashSet<>();
-        rdfList = new HashSet<>();
         moveList = new ArrayList<>();
-        dom_s = dom_i = father = dom_rs = dom_ri = rfather = null;
-        dfn = rdfn = 0;
-        bucket = new HashSet<>();
-        rbucket = new HashSet<>();
-        strictDom = new HashSet<>();
-        strictRDom = new HashSet<>();
         executable = false;
     }
 
@@ -177,6 +167,19 @@ public class IRBBlock {
                 Inst = Inst.getNext();
             }
         }
+    }
+
+    public void initDom(){
+        dominateList = new ArrayList<>();
+        rdominateList = new ArrayList<>();
+        dfList = new HashSet<>();
+        rdfList = new HashSet<>();
+        dom_s = dom_i = father = dom_rs = dom_ri = rfather = null;
+        dfn = rdfn = 0;
+        bucket = new HashSet<>();
+        rbucket = new HashSet<>();
+        strictDom = new HashSet<>();
+        strictRDom = new HashSet<>();
     }
 
     public void unionBBlock(IRBBlock other){

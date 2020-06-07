@@ -21,6 +21,9 @@ public class Dominator extends PASS{
     public void run(){
         LinkedHashMap<String, IRFunction> functList = irModule.getFunctList();
         for(var entry : functList.entrySet()){
+            initFunct(entry.getValue());
+        }
+        for(var entry : functList.entrySet()){
             Tarjan(entry.getValue());
             dfCalculator(entry.getValue());
         }
@@ -28,6 +31,12 @@ public class Dominator extends PASS{
             RTarjan(entry.getValue());
             dfRCalculator(entry.getValue());
         }
+    }
+
+    public void initFunct(IRFunction function){
+        ArrayList<IRBBlock> bblockList = function.getBBlockArray();
+        for(var bblock : bblockList)
+            bblock.initDom();
     }
 
     public void link(IRBBlock irbBlock, IRBBlock father){

@@ -25,8 +25,8 @@ import utility.*;
 public class Main {
     public static void main(String[] args)throws IOException{
         errorReminder errorReminder = new errorReminder();
-        InputStream in = System.in;
-        //InputStream in = new FileInputStream("data.in");
+        //InputStream in = System.in;
+        InputStream in = new FileInputStream("data.in");
         CharStream charStream = CharStreams.fromStream(in);
 
 
@@ -68,9 +68,15 @@ public class Main {
         cfg.run();
         dom.run();
         ssaConstructor.run();
-        dce.run();
-        sccp.run();
-        cfg.run();
+        boolean isChanged = true;
+        while(isChanged){
+            isChanged = false;
+            isChanged = isChanged | inl.run();
+            dom.run();
+            isChanged = isChanged | dce.run();
+            isChanged = isChanged | sccp.run();
+            isChanged = isChanged | cfg.run();
+        }
         SSADestructor ssaDestructor = new SSADestructor(irModule);
         ssaDestructor.run();
 //        IRPrinter irPrinter = new IRPrinter();

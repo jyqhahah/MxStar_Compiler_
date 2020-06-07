@@ -41,7 +41,7 @@ public class globalvarEliminator extends PASS {
             if(flag){
                 if(function == null)
                     removeList.add(var);
-                else{
+                else if(function.getIdentifier().equals("@main")){
                     removeList.add(var);
                     register reg = new register(var.getType(), var.getIdentifier()+"$");
                     IRBBlock entryBBlock = function.getEntryBBlock();

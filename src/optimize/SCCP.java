@@ -14,6 +14,12 @@ public class SCCP extends PASS implements IRVisitor {
     private Queue<IRBBlock> BBlockQueue;
     private Queue<register> regQueue;
     private boolean isChanged;
+    private HashMap<register, Status> StatusMap;
+    private HashMap<register, IRconst> constMap;
+    private HashSet<IRBBlock> executeSet;
+    public enum Status{
+        undefined, multidefined, constant;
+    }
 
     public SCCP(IRModule irModule) {
         super(irModule);
@@ -21,7 +27,9 @@ public class SCCP extends PASS implements IRVisitor {
 
     public boolean run(){
         isChanged = false;
-        visit(irModule);
+        LinkedHashMap<String, IRFunction> functList = irModule.getFunctList();
+        for(var entry : functList.entrySet())
+            entry.getValue().accept(this);
         return isChanged;
     }
 
@@ -69,28 +77,30 @@ public class SCCP extends PASS implements IRVisitor {
     public void visit(BinOpInst node) {
         IROperand left = node.getLeft(), right = node.getRight();
         register reg = node.getRes();
-        if(reg.status == register.Status.undefined){
+        if(getStatus(reg) == Status.undefined){
             IRconst constLeft = getConst(left), constRight = getConst(right);
             if(constLeft != null && constRight != null){
                 BinOpType bi_op = node.getType();
                 if(bi_op == BinOpType.add)
-                    markConstant(reg, new constInt(((constInt)constLeft).getValue()+((constInt)constRight).getValue()));
+                    markConstant(reg, new constInt((int)((constInt)constLeft).getValue()+((constInt)constRight).getValue()));
                 else if(bi_op == BinOpType.sub)
-                    markConstant(reg, new constInt(((constInt)constLeft).getValue()-((constInt)constRight).getValue()));
+                    markConstant(reg, new constInt((int)((constInt)constLeft).getValue()-((constInt)constRight).getValue()));
                 else if(bi_op == BinOpType.mul)
-                    markConstant(reg, new constInt(((constInt)constLeft).getValue()*((constInt)constRight).getValue()));
+                    markConstant(reg, new constInt((int)((constInt)constLeft).getValue()*((constInt)constRight).getValue()));
                 else if(bi_op == BinOpType.sdiv)
-                    markConstant(reg, new constInt(((constInt)constLeft).getValue()/((constInt)constRight).getValue()));
-                else if(bi_op == BinOpType.srem)
-                    markConstant(reg, new constInt(((constInt)constLeft).getValue()%((constInt)constRight).getValue()));
+                    markConstant(reg, new constInt((int)((constInt)constLeft).getValue()/((constInt)constRight).getValue()));
+                else if(bi_op == BinOpType.srem){
+                    if(((constInt)constRight).getValue() != 0)
+                        markConstant(reg, new constInt((int)((constInt)constLeft).getValue()%((constInt)constRight).getValue()));
+                }
                 else if(bi_op == BinOpType.and)
                     markConstant(reg, new constInt(((constInt)constLeft).getValue()&((constInt)constRight).getValue()));
                 else if(bi_op == BinOpType.or)
                     markConstant(reg, new constInt(((constInt)constLeft).getValue()|((constInt)constRight).getValue()));
                 else if(bi_op == BinOpType.shl)
-                    markConstant(reg, new constInt(((constInt)constLeft).getValue()<<((constInt)constRight).getValue()));
+                    markConstant(reg, new constInt((int)((constInt)constLeft).getValue()<<((constInt)constRight).getValue()));
                 else if(bi_op == BinOpType.ashr)
-                    markConstant(reg, new constInt(((constInt)constLeft).getValue()>>((constInt)constRight).getValue()));
+                    markConstant(reg, new constInt((int)((constInt)constLeft).getValue()>>((constInt)constRight).getValue()));
                 else if(bi_op == BinOpType.xor){
                     if(constLeft.getType() instanceof IRIntType){
                         int bytes = ((IRIntType)constLeft.getType()).bytes();
@@ -104,7 +114,7 @@ public class SCCP extends PASS implements IRVisitor {
             else if(isMultidefined(left) || isMultidefined(right))
                 markMutidefined(reg);
         }
-        else if(reg.status == register.Status.constant){
+        else if(getStatus(reg) == Status.constant){
             if(isMultidefined(left) || isMultidefined(right))
                 markMutidefined(reg);
         }
@@ -134,7 +144,7 @@ public class SCCP extends PASS implements IRVisitor {
     public void visit(IcmpInst node) {
         IROperand left = node.getLeft(), right = node.getRight();
         register reg = node.getRes();
-        if(reg.status == register.Status.undefined){
+        if(getStatus(reg) == Status.undefined){
             IRconst constLeft = getConst(left), constRight = getConst(right);
             if(constLeft != null && constRight != null){
                 IcmpType cmp_op = node.getType();
@@ -162,7 +172,7 @@ public class SCCP extends PASS implements IRVisitor {
             else if(isMultidefined(left) || isMultidefined(right))
                 markMutidefined(reg);
         }
-        else if(reg.status == register.Status.constant){
+        else if(getStatus(reg) == Status.constant){
             if(isMultidefined(left) || isMultidefined(right))
                 markMutidefined(reg);
         }
@@ -208,7 +218,7 @@ public class SCCP extends PASS implements IRVisitor {
         for(int i=0; i<opList.size(); ++i){
             IROperand operand = opList.get(i);
             IRBBlock bblock = bblockList.get(i);
-            if(bblock.getExecutable()){
+            if(executeSet.contains(bblock)){
                 if(isMultidefined(operand)){
                     markMutidefined(reg);
                     return;
@@ -286,21 +296,22 @@ public class SCCP extends PASS implements IRVisitor {
 
     @Override
     public void visit(IRModule node) {
-        LinkedHashMap<String, IRFunction> functList = node.getFunctList();
-        for(var entry : functList.entrySet())
-            entry.getValue().accept(this);
+
     }
 
     @Override
     public void visit(IRFunction node) {
         BBlockQueue = new LinkedList<>();
         regQueue = new LinkedList<>();
+        StatusMap = new HashMap<>();
+        constMap = new HashMap<>();
+        executeSet = new HashSet<>();
         IRBBlock entryBBlock = node.getEntryBBlock();
         BBlockQueue.offer(entryBBlock);
-        entryBBlock.setExecutable();
+        executeSet.add(entryBBlock);
         ArrayList<register> paras = node.getParas();
         for(register para : paras){
-            para.status = register.Status.multidefined;
+            StatusMap.put(para, Status.multidefined);
         }
         while(!BBlockQueue.isEmpty() || !regQueue.isEmpty()){
             if(!BBlockQueue.isEmpty())
@@ -314,7 +325,7 @@ public class SCCP extends PASS implements IRVisitor {
         }
         ArrayList<IRBBlock> bblockList = node.getBBlockArray();
         for(var bblock : bblockList){
-            if(!bblock.getExecutable()){
+            if(!executeSet.contains(bblock)){
                 bblock.removeAll();
                 bblock.removeAllInst();
                 bblock.removeAllUsedPhi();
@@ -324,8 +335,8 @@ public class SCCP extends PASS implements IRVisitor {
                 ArrayList<IRInstruction> InstList = bblock.getInstList();
                 for(var Inst : InstList){
                     register reg = Inst.getRes();
-                    if(reg != null && reg.status == register.Status.constant){
-                        reg.replaceUsedInst(reg.getConstant());
+                    if(reg != null && getStatus(reg) == Status.constant){
+                        reg.replaceUsedInst(getConstant(reg));
                         Inst.removeAll();
                         isChanged = true;
                     }
@@ -335,8 +346,8 @@ public class SCCP extends PASS implements IRVisitor {
     }
 
     public void markExecutable(IRBBlock bblock){
-        if(!bblock.getExecutable()){
-            bblock.setExecutable();
+        if(!executeSet.contains(bblock)){
+            executeSet.add(bblock);
             BBlockQueue.offer(bblock);
         }
         else {
@@ -349,17 +360,17 @@ public class SCCP extends PASS implements IRVisitor {
     }
 
     public void markMutidefined(register reg){
-        if(reg.status != register.Status.multidefined){
-            reg.setConstant(null);
-            reg.status = register.Status.multidefined;
+        if(getStatus(reg) != Status.multidefined){
+            constMap.put(reg, null);
+            StatusMap.put(reg, Status.multidefined);
             regQueue.offer(reg);
         }
     }
 
     public void markConstant(register reg, IRconst constant){
-        if(reg.status != register.Status.constant){
-            reg.setConstant(constant);
-            reg.status = register.Status.constant;
+        if(getStatus(reg) != Status.constant){
+            constMap.put(reg, constant);
+            StatusMap.put(reg, Status.constant);
             regQueue.offer(reg);
         }
     }
@@ -368,11 +379,22 @@ public class SCCP extends PASS implements IRVisitor {
         if(operand instanceof IRconst)
             return ((IRconst)operand);
         if(operand instanceof register)
-            return ((register)operand).getConstant();
+            return getConstant((register)operand);
         return null;
     }
 
     public boolean isMultidefined(IROperand operand){
-        return operand instanceof register && ((register)operand).status == register.Status.multidefined;
+        return operand instanceof register && getStatus((register)operand) == Status.multidefined;
+    }
+
+    public IRconst getConstant(register reg){
+        return constMap.get(reg);
+    }
+
+    public Status getStatus(register reg){
+        if(StatusMap.containsKey(reg))
+            return StatusMap.get(reg);
+        else
+            return Status.undefined;
     }
 }

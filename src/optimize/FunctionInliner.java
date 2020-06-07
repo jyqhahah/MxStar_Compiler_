@@ -24,7 +24,8 @@ public class FunctionInliner extends PASS {
     private HashSet<IRFunction> visited;
     private HashMap<IROperand, IROperand> regRenamer;
     private HashMap<IRBBlock, IRBBlock> bblockRenamer;
-    private static int maxInstNumber = 99, maxDepth = 1;
+    private ArrayList<IRFunction> functStack;
+    private static int maxInstNumber = 1000, maxDepth = 1;
 
     public FunctionInliner(IRModule irModule) {
         super(irModule);
@@ -38,6 +39,7 @@ public class FunctionInliner extends PASS {
         RecurSet = new HashSet<>();
         dfsList = new ArrayList<>();
         visited = new HashSet<>();
+        functStack = new ArrayList<>();
         LinkedHashMap<String, IRFunction> functList = irModule.getFunctList();
         for(var entry : functList.entrySet()){
             visit(entry.getValue());
@@ -51,7 +53,7 @@ public class FunctionInliner extends PASS {
                 ArrayList<CallInst> callList = CallMap.get(function);
                 for(var callInst : callList){
                     IRFunction callee = callInst.getFunct();
-                    if(!RecurSet.contains(callee) && InstNumbers.get(callee) < maxInstNumber && !callInst.isInLined()){
+                    if(!RecurSet.contains(callee) && InstNumbers.get(callee) + InstNumbers.get(function) < maxInstNumber && !callInst.isInLined()){
                         inline(function, callee, callInst);
                         callInst.setInLined();
                         InstNumbers.put(function, InstNumbers.get(function)+InstNumbers.get(callee));
@@ -68,7 +70,7 @@ public class FunctionInliner extends PASS {
                 ArrayList<CallInst> callList = CallMap.get(function);
                 for(var callInst : callList){
                     IRFunction callee = callInst.getFunct();
-                    if(InstNumbers.get(callee) < maxInstNumber && !callInst.isInLined() && callee != function){
+                    if(RecurSet.contains(callee) && InstNumbers.get(callee) + InstNumbers.get(function) < maxInstNumber && !callInst.isInLined() && callee != function){
                         inline(function, callee, callInst);
                         callInst.setInLined();
                         InstNumbers.put(function, InstNumbers.get(function)+InstNumbers.get(callee));
@@ -122,14 +124,22 @@ public class FunctionInliner extends PASS {
     public void dfsRecursive(IRFunction function){
         dfsList.add(function);
         InStack.put(function, 1);
+        functStack.add(function);
         ArrayList<CallInst> CallList = CallMap.get(function);
         for(var callInst : CallList){
             IRFunction callee = callInst.getFunct();
             if(InStack.get(callee) == 0)
                 dfsRecursive(callee);
-            else if(InStack.get(callee) == 1)
+            else if(InStack.get(callee) == 1){
                 RecurSet.add(callee);
+                for(int i = functStack.size()-1; i>=0; --i){
+                    RecurSet.add(functStack.get(i));
+                    if(functStack.get(i) == callee)
+                        break;
+                }
+            }
         }
+        functStack.remove(functStack.size()-1);
         InStack.put(function, 2);
     }
 
