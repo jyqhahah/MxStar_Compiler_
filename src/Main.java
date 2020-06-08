@@ -22,6 +22,8 @@ import riscv.RvPrinter;
 import riscv.operand.RvPhyReg;
 import utility.*;
 
+import javax.accessibility.AccessibleSelection;
+
 public class Main {
     public static void main(String[] args)throws IOException{
         errorReminder errorReminder = new errorReminder();
@@ -71,12 +73,14 @@ public class Main {
         gve.run();
         cfg.run();
         dom.run();
+        CSElimination cse = new CSElimination(irModule);
         ssaConstructor.run();
         boolean isChanged = true;
         while(isChanged){
             isChanged = false;
             isChanged = isChanged | inl.run();
             dom.run();
+            isChanged = isChanged | cse.run();
             isChanged = isChanged | dce.run();
             isChanged = isChanged | sccp.run();
             isChanged = isChanged | cfg.run();

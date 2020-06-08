@@ -13,6 +13,7 @@ import java.util.*;
 public class SCCP extends PASS implements IRVisitor {
     private Queue<IRBBlock> BBlockQueue;
     private Queue<register> regQueue;
+    private ArrayList<IRInstruction> removeList;
     private boolean isChanged;
     private HashMap<register, Status> StatusMap;
     private HashMap<register, IRconst> constMap;
@@ -303,6 +304,7 @@ public class SCCP extends PASS implements IRVisitor {
     public void visit(IRFunction node) {
         BBlockQueue = new LinkedList<>();
         regQueue = new LinkedList<>();
+        removeList = new ArrayList<>();
         StatusMap = new HashMap<>();
         constMap = new HashMap<>();
         executeSet = new HashSet<>();
@@ -337,12 +339,15 @@ public class SCCP extends PASS implements IRVisitor {
                     register reg = Inst.getRes();
                     if(reg != null && getStatus(reg) == Status.constant){
                         reg.replaceUsedInst(getConstant(reg));
-                        Inst.removeAll();
+                        //Inst.removeAll();
+                        removeList.add(Inst);
                         isChanged = true;
                     }
                 }
             }
         }
+        for(var Inst :removeList)
+            Inst.removeAll();
     }
 
     public void markExecutable(IRBBlock bblock){

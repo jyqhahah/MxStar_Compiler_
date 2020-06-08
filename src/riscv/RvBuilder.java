@@ -322,8 +322,11 @@ public class RvBuilder implements IRVisitor {
                 curBBlock.addInst(new RvLuiInst(curBBlock, VirReg, new address(RegisterList.hi, RvStr)));
                 curBBlock.addInst(new RvStoreInst(curBBlock, getRvRegister(node.getValue()), VirReg, new address(RegisterList.lo, RvStr)));
             }
-            else
-                curBBlock.addInst(new RvStoreInst(curBBlock, getRvRegister(node.getValue()), getRvRegister(node.getPtr()), new imm(0)));
+            else{
+                RvInstruction store = new RvStoreInst(curBBlock, getRvRegister(node.getValue()), getRvRegister(node.getPtr()), new imm(0));
+                curBBlock.addInst(store);
+                node.setRvInst(store);
+            }
         }
     }
 
@@ -348,8 +351,11 @@ public class RvBuilder implements IRVisitor {
                 curBBlock.addInst(new RvLuiInst(curBBlock, VirReg, new address(RegisterList.hi, RvStr)));
                 curBBlock.addInst(new RvLoadInst(curBBlock, getRvRegister(node.getRes()), VirReg, new address(RegisterList.lo, RvStr)));
             }
-            else
-                curBBlock.addInst(new RvLoadInst(curBBlock, getRvRegister(node.getRes()), getRvRegister(node.getPtr()), new imm(0)));
+            else {
+                RvInstruction load = new RvLoadInst(curBBlock, getRvRegister(node.getRes()), getRvRegister(node.getPtr()), new imm(0));
+                curBBlock.addInst(load);
+                node.setRvInst(load);
+            }
         }
     }
 

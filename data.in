@@ -1,47 +1,41 @@
 /*
-Test Package: Sema_Local_Preview
-Test Target: Classes
-Author: 15' Lianming Zheng
-Time: 2019-10-20
-Verdict: Success
-Origin Package: Semantic Extended
+Test Package: Codegen
+Author: Pikachu
+Time: 2020-02-02
+Input:
+=== input ===
+79 35 12
+=== end ===
+Output:
+=== output ===
+<< 23 24 25 26 27 28 29 30 31 32 33 34 (35) 36 37 38 39 40 41 42 43 44 45 46 47 >>
+=== end ===
+ExitCode: 0
+InstLimit: -1
+Origin Package: Codeforces 399A #44003944
 */
-
-A object;
-
+int n;
+int p;
+int k;
+int i;
 int main() {
-    object.func1(2, 3);
+	n = getInt();
+	p = getInt();
+	k = getInt();
+	if(p-k>1) print("<< ");
+	for(i= p-k; i<=p+k;i++)
+	      if(1<= i && i <= n) {
+	         if(i==p){
+				 print("(");
+				 print(toString(i));
+				 print(") ");
+			 }
+	        else{
+				printInt(i);
+				print(" ");
+			}
+	  }
+	if(p + k < n) print(">> ");
 
-    object.set(0, 1)
-          .set(1, 0);
-
-    object.copy(object.getThis())
-          .copy(object.getThis().getThis());
-
-    return 0;
+	return 0;
 }
-
-class A {
-    void func1(int x, int y) {
-        func2(this.x*x, this.y*y);
-    }
-
-    void func2(int xx, int yy) {
-        func1(x*this.x, y*this.y);
-    }
-
-    A set(int xx, int yy) {
-        return set(x, y).set(this.x, this.y).set(xx, yy).getThis();
-    }
-
-    A copy(A other) {
-        // this = other;
-        return this;
-    }
-
-    A getThis() {
-        return getThis().getThis().getThis().getThis().copy(this);
-    }
-
-    int x; int y;
-};

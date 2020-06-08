@@ -105,7 +105,7 @@ public class BranchInst extends IRInstruction {
     public void replaceUsedInst(IROperand oldOp, IROperand newOp) {
         if(cond == oldOp){
             cond = newOp;
-            oldOp.removeUsedInst(this);
+            //oldOp.removeUsedInst(this);
             newOp.addUsedInst(this);
             if(newOp instanceof constBool){
                 cond = null;
