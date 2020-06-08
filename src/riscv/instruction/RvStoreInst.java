@@ -39,6 +39,18 @@ public class RvStoreInst extends RvInstruction {
         }
     }
 
+    public riscv.operand.imm getImm() {
+        return imm;
+    }
+
+    public RvRegister getRd() {
+        return rd;
+    }
+
+    public RvOperand getDest() {
+        return dest;
+    }
+
     @Override
     public String toString() {
         if (dest instanceof spSlot)

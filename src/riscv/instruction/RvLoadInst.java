@@ -2,10 +2,7 @@ package riscv.instruction;
 
 import riscv.RvBBlock;
 import riscv.RvVisitor;
-import riscv.operand.RvOperand;
-import riscv.operand.RvRegister;
-import riscv.operand.imm;
-import riscv.operand.spSlot;
+import riscv.operand.*;
 
 public class RvLoadInst extends RvInstruction {
     private RvOperand src;
@@ -78,6 +75,10 @@ public class RvLoadInst extends RvInstruction {
         }
     }
 
+    public RvRegister getRd() {
+        return rd;
+    }
+
     @Override
     public void removeAllUsed() {
         if(src instanceof RvRegister){
@@ -92,5 +93,32 @@ public class RvLoadInst extends RvInstruction {
         rd.removeDef(this);
         defList.remove(rd);
         rd.subSpill(isInLoop);
+    }
+
+    public boolean check(RvStoreInst store){
+        imm offset = store.getImm();
+        RvOperand dest = store.getDest();
+        RvRegister reg = null, loadReg = null;
+        int imm = -1, loadImm = -1;
+        if(dest instanceof spSlot){
+            imm = ((spSlot)dest).getIndex();
+            reg = RegisterList.sp;
+        }
+        else if(dest instanceof RvRegister){
+            imm = offset.getValue();
+            reg = (RvRegister)dest;
+        }
+        if(src instanceof spSlot){
+            loadImm = ((spSlot)src).getIndex();
+            loadReg = RegisterList.sp;
+        }
+        else if(src instanceof RvRegister){
+            loadImm = this.imm.getValue();
+            loadReg = (RvRegister)src;
+        }
+        if(reg == null || loadReg == null)
+            return false;
+        else
+            return reg == loadReg && imm == loadImm;
     }
 }

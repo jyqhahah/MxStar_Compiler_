@@ -1,5 +1,6 @@
 package riscv;
 
+import llvm_IR.instruction.StoreInst;
 import riscv.instruction.RvInstruction;
 import riscv.instruction.RvLoadInst;
 import riscv.instruction.RvMoveInst;
@@ -94,6 +95,7 @@ public class RegAlloca {
             }
             removeRedundantMoves(funct);
             stackSlotAlloca(funct);
+            peephole(funct);
         }
     }
 
@@ -435,6 +437,20 @@ public class RegAlloca {
                     bblock.removeInst(move);
                     move.removeAllDef();
                     move.removeAllUsed();
+                }
+            }
+        }
+    }
+
+    public void peephole(RvFunction function){
+        ArrayList<RvBBlock> bblockList = function.getBBlockList();
+        for(var bblock : bblockList){
+            ArrayList<RvLoadInst> loadList = bblock.getLoadList();
+            for(var load : loadList){
+                RvInstruction storeInst = load.getPrev();
+                if(storeInst != null && storeInst instanceof RvStoreInst && load.check((RvStoreInst)storeInst)){
+                    RvMoveInst moveInst = new RvMoveInst(bblock, load.getRd(), ((RvStoreInst) storeInst).getRd());
+                    bblock.replaceInst(load, moveInst);
                 }
             }
         }

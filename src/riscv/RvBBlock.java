@@ -1,6 +1,7 @@
 package riscv;
 
 import riscv.instruction.RvInstruction;
+import riscv.instruction.RvLoadInst;
 import riscv.instruction.RvMoveInst;
 import riscv.operand.RvRegister;
 
@@ -173,6 +174,44 @@ public class RvBBlock {
             if(!visitor.contains(bblock))
                 bblock.dfs(order, visitor);
         }
+    }
+
+    public ArrayList<RvLoadInst> getLoadList(){
+        ArrayList<RvLoadInst> loadList = new ArrayList<>();
+        RvInstruction Inst = head;
+        while(Inst != null){
+            if(Inst instanceof RvLoadInst)
+                loadList.add((RvLoadInst)Inst);
+            Inst = Inst.getNext();
+        }
+        return loadList;
+    }
+
+    public void replaceInst(RvInstruction oldInst, RvInstruction newInst){
+        RvInstruction prev = oldInst.getPrev(), next = oldInst.getNext();
+        if(oldInst == head){
+            if(next != null){
+                next.setPrev(newInst);
+                newInst.setNext(next);
+            }
+            head = newInst;
+        }
+        else if(oldInst == rear){
+            if(prev != null){
+                prev.setNext(newInst);
+                newInst.setPrev(prev);
+            }
+            rear = newInst;
+        }
+        else{
+            newInst.setNext(next);
+            newInst.setPrev(prev);
+            prev.setNext(newInst);
+            next.setPrev(newInst);
+        }
+        newInst.init();
+        oldInst.removeAllDef();
+        oldInst.removeAllUsed();
     }
 
     public void addPredBBlock(RvBBlock bBlock){

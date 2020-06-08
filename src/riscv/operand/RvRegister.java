@@ -110,14 +110,14 @@ public class RvRegister extends RvOperand {
 
     public void addSpill(boolean isInLoop){
         if(isInLoop)
-            spill += 10;
+            spill += 100;
         else
             spill += 1;
     }
 
     public void subSpill(boolean isInLoop){
         if(isInLoop)
-            spill -= 10;
+            spill -= 100;
         else
             spill -= 1;
     }
