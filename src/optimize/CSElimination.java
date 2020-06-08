@@ -320,7 +320,7 @@ public class CSElimination extends PASS {
             }
             for(var move : ptr.moveList){
                 if(move.dest.addAll(ptr.dest)){
-                    if(inQueue.contains(move)){
+                    if(!inQueue.contains(move)){
                         pointerQueue.offer(move);
                         inQueue.add(move);
                     }

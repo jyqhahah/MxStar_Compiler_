@@ -69,12 +69,12 @@ public class Main {
         SSAConstructor ssaConstructor = new SSAConstructor(irModule);
         DCE dce = new DCE(irModule);
         SCCP sccp = new SCCP(irModule);
+        CSElimination cse = new CSElimination(irModule);
+        peephole pph = new peephole(irModule, cse);
         inl.run();
         gve.run();
         cfg.run();
         dom.run();
-        CSElimination cse = new CSElimination(irModule);
-        peephole pph = new peephole(irModule, cse);
         ssaConstructor.run();
         boolean isChanged = true;
         while(isChanged){
