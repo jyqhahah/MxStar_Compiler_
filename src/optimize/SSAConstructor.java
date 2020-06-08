@@ -22,7 +22,7 @@ public class SSAConstructor extends PASS {
         LinkedHashMap<String, IRFunction> functList = irModule.getFunctList();
         for(var entry : functList.entrySet())
             constructor(entry.getValue());
-
+        printRestructor();
     }
 
     public void constructor(IRFunction function){
@@ -169,6 +169,36 @@ public class SSAConstructor extends PASS {
         for(var entry : phiMap.entrySet()){
             register address = entry.getKey();
             pop(address);
+        }
+    }
+
+    public void printRestructor(){
+        IRFunction printlnInt = irModule.getBuiltInFunct("__printlnInt");
+        LinkedHashMap<String, IRFunction> functList = irModule.getFunctList();
+        for(var entry : functList.entrySet()){
+            IRFunction funct = entry.getValue();
+            IRBBlock bblock = funct.getEntryBBlock();
+            while(bblock != null){
+                ArrayList<IRInstruction> InstList = bblock.getInstList();
+                for(var Inst : InstList){
+                    if(Inst instanceof CallInst && ((CallInst)Inst).getFunct().getIdentifier().equals("@__println")){
+                        IRInstruction prev = Inst.getPrev();
+                        IROperand InstPara0 = ((CallInst) Inst).getParas().get(0);
+                        if(prev instanceof CallInst && ((CallInst) prev).getFunct().getIdentifier().equals("@__toString")){
+                            IRInstruction next = Inst.getNext();
+                            IROperand prevPara0 = ((CallInst) prev).getParas().get(0);
+                            if(next != null && InstPara0 == prev.getRes()){
+                                ArrayList<IROperand> tmpList = new ArrayList<>();
+                                tmpList.add(prevPara0);
+                                CallInst newInst = new CallInst(printlnInt, tmpList, null);
+                                Inst.removeAll();prev.removeAll();
+                                next.getCurBBlock().addInstPrev(next, newInst);
+                            }
+                        }
+                    }
+                }
+                bblock = bblock.getNext();
+            }
         }
     }
 }

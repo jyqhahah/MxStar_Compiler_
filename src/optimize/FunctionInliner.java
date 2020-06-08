@@ -25,7 +25,7 @@ public class FunctionInliner extends PASS {
     private HashMap<IROperand, IROperand> regRenamer;
     private HashMap<IRBBlock, IRBBlock> bblockRenamer;
     private ArrayList<IRFunction> functStack;
-    private static int maxInstNumber = 999, maxDepth = 1;
+    private static int maxInstNumber = 1333, maxDepth = 10;
 
     public FunctionInliner(IRModule irModule) {
         super(irModule);

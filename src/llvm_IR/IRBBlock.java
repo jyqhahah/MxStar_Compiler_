@@ -248,6 +248,24 @@ public class IRBBlock {
             head = Inst;
     }
 
+    public void addInstPrev(IRInstruction next, IRInstruction Inst){
+        Inst.setCurBBlock(this);
+        Inst.initDefAndUsed();
+        if(next == head){
+            head = Inst;
+            Inst.setPrev(null);
+            Inst.setNext(next);
+            next.setPrev(Inst);
+        }
+        else{
+            IRInstruction prev = next.getPrev();
+            prev.setNext(Inst);
+            Inst.setPrev(prev);
+            next.setPrev(Inst);
+            Inst.setNext(next);
+        }
+    }
+
     public void addInstNoInit(IRInstruction Inst){
         if((rear != null)&&(rear instanceof BranchInst)){
             return;

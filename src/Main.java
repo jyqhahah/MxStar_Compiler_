@@ -22,7 +22,6 @@ import riscv.RvPrinter;
 import riscv.operand.RvPhyReg;
 import utility.*;
 
-import javax.accessibility.AccessibleSelection;
 
 public class Main {
     public static void main(String[] args)throws IOException{
@@ -55,7 +54,7 @@ public class Main {
         if(args[0].equals("0")) {
             System.exit(count);
         }
-        //System.out.println("ir start");
+        System.out.println("ir start");
         GlobalScope scope = checker.getGlobalScope();
         StringType stringType = checker.getStringType();
         IRBuilder irBuilder = new IRBuilder(scope, stringType);
