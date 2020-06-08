@@ -74,6 +74,7 @@ public class Main {
         cfg.run();
         dom.run();
         CSElimination cse = new CSElimination(irModule);
+        peephole pph = new peephole(irModule, cse);
         ssaConstructor.run();
         boolean isChanged = true;
         while(isChanged){
@@ -81,6 +82,7 @@ public class Main {
             isChanged = isChanged | inl.run();
             dom.run();
             isChanged = isChanged | cse.run();
+            isChanged = isChanged | pph.run();
             isChanged = isChanged | dce.run();
             isChanged = isChanged | sccp.run();
             isChanged = isChanged | cfg.run();

@@ -53,6 +53,19 @@ abstract public class IRInstruction {
         else curBBlock.setRear(prev);
     }
 
+    public IRInstruction getPrevInst(){
+        if(prev == null){
+            IRBBlock curBBlock = getCurBBlock();
+            IRBBlock dom_i = curBBlock.getDom_i();
+            if(curBBlock.getPrevBBlock().size() == 1)
+                return curBBlock.getPrevBBlock().get(0).getRear();
+            else
+                return null;
+        }
+        else
+            return prev;
+    }
+
     public abstract String toString();
 
     public abstract void accept(IRVisitor visitor);
