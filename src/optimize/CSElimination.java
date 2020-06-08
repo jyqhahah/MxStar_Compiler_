@@ -105,8 +105,12 @@ public class CSElimination extends PASS {
     public void eliminationBBlock(IRBBlock bblock){
         ArrayList<IRInstruction> InstList = bblock.getInstList();
         for(var Inst : InstList){
-            cseExpr expr = getCseExpr(Inst);
-            if(expr == null) continue;
+            cseExpr expr;
+            if(Inst instanceof BinOpInst || Inst instanceof GetElemPtrInst || Inst instanceof IcmpInst || Inst instanceof LoadInst)
+                expr = getCseExpr(Inst);
+            else
+                continue;
+            //if(expr == null) continue;
             Stack<Pair<IRInstruction, register>> stack = null;
             if(stackMap.containsKey(expr))
                 stack = stackMap.get(expr);
@@ -296,7 +300,7 @@ public class CSElimination extends PASS {
                 for(var d : ptr.dest){
                     if(!d.moveList.contains(load)){
                         d.moveList.add(load);
-                        if(!inQueue.contains(d));{
+                        if(!inQueue.contains(d)){
                             pointerQueue.offer(d);
                             inQueue.add(d);
                         }
@@ -307,7 +311,7 @@ public class CSElimination extends PASS {
                 for(var d : ptr.dest){
                     if(!store.moveList.contains(d)){
                         store.moveList.add(d);
-                        if(!inQueue.contains(store));{
+                        if(!inQueue.contains(store)){
                             pointerQueue.offer(store);
                             inQueue.add(store);
                         }

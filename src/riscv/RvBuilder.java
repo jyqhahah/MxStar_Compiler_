@@ -438,12 +438,12 @@ public class RvBuilder implements IRVisitor {
                                 Inst.setRvInst(new RvStoreInst(curBBlock, getRvRegister(((StoreInst)Inst).getValue()), getRvRegister(ptr), new imm(offset)));
                         }
                     }
-                    else{
+                   // else{
                         if(offset == 0)
                             curBBlock.addInst(new RvMoveInst(curBBlock, getRvRegister(reg), getRvRegister(ptr)));
                         else
                             curBBlock.addInst(new RvIInst(curBBlock, RvIInst.i_op.addi, getRvRegister(reg), getRvRegister(ptr), new imm(offset)));
-                    }
+                        //}
                 }
                 else{
                     RvVirReg VirReg = curFunct.newVirReg("tmp");
