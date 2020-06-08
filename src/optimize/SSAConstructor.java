@@ -171,7 +171,6 @@ public class SSAConstructor extends PASS {
             pop(address);
         }
     }
-
     public void printRestructor(){
         IRFunction printlnInt = irModule.getBuiltInFunct("__printlnInt");
         LinkedHashMap<String, IRFunction> functList = irModule.getFunctList();

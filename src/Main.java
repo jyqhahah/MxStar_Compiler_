@@ -1,15 +1,17 @@
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 import AST.*;
 import SemanticChecker.Scope.GlobalScope;
 import SemanticChecker.Scope.Type.StringType;
 import SemanticChecker.SemanticChecker.SemanticChecker;
-import llvm_IR.IRBBlock;
-import llvm_IR.IRBuilder;
-import llvm_IR.IRModule;
-import llvm_IR.IRPrinter;
+import llvm_IR.*;
+import llvm_IR.instruction.CallInst;
+import llvm_IR.instruction.IRInstruction;
+import llvm_IR.operand.IROperand;
 import optimize.*;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
@@ -19,7 +21,6 @@ import riscv.RegAlloca;
 import riscv.RvBuilder;
 import riscv.RvModule;
 import riscv.RvPrinter;
-import riscv.operand.RvPhyReg;
 import utility.*;
 
 
@@ -54,7 +55,7 @@ public class Main {
         if(args[0].equals("0")) {
             System.exit(count);
         }
-        System.out.println("ir start");
+        //System.out.println("ir start");
         GlobalScope scope = checker.getGlobalScope();
         StringType stringType = checker.getStringType();
         IRBuilder irBuilder = new IRBuilder(scope, stringType);
